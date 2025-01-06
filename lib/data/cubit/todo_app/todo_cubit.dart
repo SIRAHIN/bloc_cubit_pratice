@@ -18,8 +18,6 @@ class TodoCubit extends Cubit<TodoCubitState> {
         DateTime.now(),
       ),
     );
-/Users/barikoi/bloc_practice/bloc_practice/lib/data/bloc/login/login_bloc.dart
-/Users/barikoi/bloc_practice/bloc_practice/lib/data/cubit/login/login_cubit.dart
     emit(
       TodoCubitState(newList),
     );

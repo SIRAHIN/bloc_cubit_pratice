@@ -34,7 +34,10 @@ class MyApp extends StatelessWidget {
 
        BlocProvider(create: (context) => LoginBloc()),
 
-       BlocProvider(create: (context)=> LoginCubit())
+       BlocProvider(create: (context)=> LoginCubit()),
+
+
+       //Bloc provider 
       ],
      
       child: MaterialApp(
