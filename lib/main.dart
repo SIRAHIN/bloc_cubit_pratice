@@ -4,6 +4,8 @@ import 'package:bloc_practice/data/bloc/counter/counter_bloc.dart';
 import 'package:bloc_practice/data/bloc/loader/loader_bloc.dart';
 import 'package:bloc_practice/data/bloc/login/login_bloc.dart';
 import 'package:bloc_practice/data/cubit/counter/counter_cubit.dart';
+import 'package:bloc_practice/data/cubit/cubit_post_api/cubit/cubit_post.dart';
+import 'package:bloc_practice/data/cubit/cubit_post_details/cubit/post_details_cubit.dart';
 import 'package:bloc_practice/data/cubit/loader/loading_cubit.dart';
 import 'package:bloc_practice/data/cubit/login/login_cubit.dart';
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit.dart';
@@ -12,6 +14,7 @@ import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
 import 'package:bloc_practice/data/repository/post_details_repository.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:bloc_practice/presentation/post_screen_bloc/post_screen_bloc.dart';
+import 'package:bloc_practice/presentation/post_screen_cubit/post_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,6 +61,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) => LoginCubit(),
           ),
+
+          // Bloc Api Calling Provider //
           BlocProvider(
             create: (context) => ApiCallingBloc(
               context.read<PostRepository>(),
@@ -68,10 +73,19 @@ class MyApp extends StatelessWidget {
               context.read<PostDetailsRepository>(),
             ),
           ),
+          
+          // Cubit Api Calling Provider //
+          BlocProvider(create: (context) => CubitPost(
+            context.read<PostRepository>(),
+          )),
+
+          BlocProvider(create: (context) => PostDetailsCubit(
+            context.read<PostDetailsRepository>(),
+          )),
         ],
         child: MaterialApp(
           title: 'Material App',
-          home: PostScreenBloc(),
+          home: PostScreenCubit(),
         ),
       ),
     );
