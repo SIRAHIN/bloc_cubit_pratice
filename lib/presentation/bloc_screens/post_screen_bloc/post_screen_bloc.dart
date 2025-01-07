@@ -1,7 +1,7 @@
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_bloc.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_event.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_state.dart';
-import 'package:bloc_practice/presentation/post_screen_bloc/post_details_screen_bloc.dart';
+import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_details_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

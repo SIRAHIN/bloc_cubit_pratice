@@ -13,8 +13,8 @@ import 'package:bloc_practice/data/data_provider/post_data_provider.dart';
 import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
 import 'package:bloc_practice/data/repository/post_details_repository.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
-import 'package:bloc_practice/presentation/post_screen_bloc/post_screen_bloc.dart';
-import 'package:bloc_practice/presentation/post_screen_cubit/post_screen_cubit.dart';
+import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
+import 'package:bloc_practice/presentation/cubit_screens/post_screen_cubit/post_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

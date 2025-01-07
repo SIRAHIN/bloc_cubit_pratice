@@ -1,6 +1,6 @@
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit.dart';
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit_state.dart';
-import 'package:bloc_practice/presentation/todo_screen/todo_create_screen.dart';
+import 'package:bloc_practice/presentation/cubit_screens/todo_screen/todo_create_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
