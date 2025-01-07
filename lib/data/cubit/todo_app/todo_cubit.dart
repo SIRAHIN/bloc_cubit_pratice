@@ -8,11 +8,13 @@ class TodoCubit extends Cubit<TodoCubitState> {
   void addTodoData(String todoText) {
     final List<TodoModel> newList = List<TodoModel>.from(state.todoData);
 
+    final List<TodoModel> newListType2 = [];
+
     if (todoText.isEmpty) {
       addError('Title Can not be empty');
       return;
     }
-    newList.add(
+    newListType2.add(
       TodoModel(
         todoText,
         DateTime.now(),
