@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Material App',
-          home: TodoListScreen(),
+          home: ImagePickerCubitScreen(),
         ),
       ),
     );

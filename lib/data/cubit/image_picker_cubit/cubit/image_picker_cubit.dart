@@ -16,7 +16,11 @@ class ImagePickerCubit extends Cubit<ImagePickerState> {
           await _imagePicker.pickImage(source: ImageSource.gallery);
       if (image != null) {
         _imageList.add(image); // Add the selected image to the list
-        emit(ImagePickerLoadedState(_imageList)); // Emit a new state with the updated list // emit(ImagePickerLoadedState(List.from(_imageList))
+        //emit(ImagePickerLoadedState(_imageList));
+        //emit(ImagePickerLoadedState(List.from(_imageList)));
+        emit(ImagePickerLoadedState([..._imageList]));
+      } else if (_imageList.isNotEmpty) {
+        emit(ImagePickerLoadedState([..._imageList]));
       } else {
         emit(ImagePickerErrorState('No image selected'));
       }
