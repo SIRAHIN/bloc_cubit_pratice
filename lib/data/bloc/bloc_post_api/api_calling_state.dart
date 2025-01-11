@@ -8,9 +8,22 @@ class ApiCallingLoading extends ApiCallingState {}
 
 class ApiCallingSuccess extends ApiCallingState {
   final List<PostModel> postModel;
+  final List<PostModel> postFavoriteList;
 
-  ApiCallingSuccess(this.postModel);
+  ApiCallingSuccess({this.postModel = const [], this.postFavoriteList = const []});
 }
+
+
+// class PostFavoriteState extends ApiCallingState {
+//   final List<PostModel> postFavoriteList;
+
+//   PostFavoriteState(this.postFavoriteList);
+// }
+
+
+
+
+
 
 class ApiCallingFailuer extends ApiCallingState {
   final String failuerText;

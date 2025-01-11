@@ -5,13 +5,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class TodoCubit extends Cubit<TodoCubitState> {
   TodoCubit() : super(TodoCubitState([]));
 
-  void addTodoData(String todoText) {
-    final List<TodoModel> newList = List<TodoModel>.from(state.todoData);
+  final List<TodoModel> newListType2 = [];
 
-    final List<TodoModel> newListType2 = [];
+  void addTodoData(String todoText) {
+    //final List<TodoModel> newList = List<TodoModel>.from(state.todoData);
+
+    
 
     if (todoText.isEmpty) {
       addError('Title Can not be empty');
+      
       return;
     }
     newListType2.add(
@@ -21,17 +24,17 @@ class TodoCubit extends Cubit<TodoCubitState> {
       ),
     );
     emit(
-      TodoCubitState(newList),
+      TodoCubitState(newListType2),
     );
   }
 
   void removedTodo(int index) {
-    final List<TodoModel> newList = List<TodoModel>.from(state.todoData);
+    //final List<TodoModel> newList = List<TodoModel>.from(state.todoData);
 
-    newList.removeAt(index);
+    newListType2.removeAt(index);
 
     emit(
-      TodoCubitState(newList),
+      TodoCubitState(newListType2),
     );
   }
 

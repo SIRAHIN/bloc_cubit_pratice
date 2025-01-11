@@ -38,6 +38,24 @@ class _PostScreenBlocState extends State<PostScreenBloc> {
                   child: ListTile(
                     title: Text(postData.title.toString()),
                     subtitle: Text(postData.body.toString()),
+                    trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(onPressed: () {
+                          context.read<ApiCallingBloc>().add(DeleteItemFromPost(postModelItem: postData));
+                        }, icon: Icon(Icons.delete)),
+                        SizedBox(width: 4,),
+                        IconButton(onPressed: () {
+                        if(context.read<ApiCallingBloc>().postFavoriteList.contains(postData)){
+                          context.read<ApiCallingBloc>().add(ApiRemovedFavoriteEvent(postModelItem: postData));
+                        } 
+                        else{
+                         context.read<ApiCallingBloc>().add(ApiAddFavoriteEvent(postModelItem: postData));
+                        }
+                         
+                        }, icon: context.read<ApiCallingBloc>().postFavoriteList.contains(postData) ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
+                      ],
+                    ),
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetailsScreenBloc(postID: postData.id!,)));
                     },
