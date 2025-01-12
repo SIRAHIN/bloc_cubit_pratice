@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitHomeScreen extends StatelessWidget {
-  const CubitHomeScreen({super.key});
+  final Function(int postId)? onPostSelected;
+
+  const CubitHomeScreen({super.key, this.onPostSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class CubitHomeScreen extends StatelessWidget {
                   Text(state.successText),
                   ElevatedButton(
                     onPressed: () {
+                      onPostSelected!.call(1);
                       context.read<LoginCubit>().logoutRequested();
                     },
                     child: Icon(Icons.login),

@@ -7,13 +7,13 @@ part 'image_picker_state.dart';
 class ImagePickerCubit extends Cubit<ImagePickerState> {
   ImagePickerCubit() : super(ImagePickerInitialState());
 
-  final ImagePicker _imagePicker = ImagePicker();
+  final ImagePicker imagePicker = ImagePicker();
   final List<XFile> _imageList = []; // Maintain the list of selected images
 
   void pickImage() async {
     try {
       final XFile? image =
-          await _imagePicker.pickImage(source: ImageSource.gallery);
+          await imagePicker.pickImage(source: ImageSource.gallery);
       if (image != null) {
         _imageList.add(image); // Add the selected image to the list
         

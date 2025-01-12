@@ -51,7 +51,15 @@ class _LoginBlocScreenState extends State<LoginCubitScreen> {
 
           if (state is LoginCubitSuccessState) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => CubitHomeScreen()));
+              context,
+              MaterialPageRoute(
+                builder: (context) => CubitHomeScreen(
+                  onPostSelected: (postId) {
+                    print(postId);
+                  },
+                ),
+              ),
+            );
           }
         },
         builder: (context, state) {
