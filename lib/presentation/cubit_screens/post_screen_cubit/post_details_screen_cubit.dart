@@ -31,7 +31,7 @@ class _PostDetailsScreenBlocState extends State<PostDetailsScreenCubit> {
             if (state is PostDetailsLoadingCubitState) {
               return Text('Loading...');
             } else if (state is PostDetailsSuccessCubitState) {
-              return Text('${state.postDetailsModel.title}');
+              return Text(state.postDetailsModel.title);
             } else {
               return Text('Error');
             }
