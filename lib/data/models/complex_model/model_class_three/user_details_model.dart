@@ -9,7 +9,7 @@ class UserDetails with _$UserDetails {
     required int id,
     required String name,
     required String email,
-    required String profilePicture,
+    @JsonKey(name: 'profile_picture') required String profilePicture,
     required String bio,
     required bool isVerified,
     required String createdAt,
@@ -19,3 +19,6 @@ class UserDetails with _$UserDetails {
   factory UserDetails.fromJson(Map<String, dynamic> json) => _$UserDetailsFromJson(json);
 }
 
+// -- After That Run This command -- //
+// flutter pub run build_runner build
+// dart run build_runner build --delete-conflicting-outputs

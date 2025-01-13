@@ -23,6 +23,7 @@ mixin _$UserDetails {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_picture')
   String get profilePicture => throw _privateConstructorUsedError;
   String get bio => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
@@ -49,7 +50,7 @@ abstract class $UserDetailsCopyWith<$Res> {
       {int id,
       String name,
       String email,
-      String profilePicture,
+      @JsonKey(name: 'profile_picture') String profilePicture,
       String bio,
       bool isVerified,
       String createdAt,
@@ -129,7 +130,7 @@ abstract class _$$UserDetailsImplCopyWith<$Res>
       {int id,
       String name,
       String email,
-      String profilePicture,
+      @JsonKey(name: 'profile_picture') String profilePicture,
       String bio,
       bool isVerified,
       String createdAt,
@@ -202,7 +203,7 @@ class _$UserDetailsImpl implements _UserDetails {
       {required this.id,
       required this.name,
       required this.email,
-      required this.profilePicture,
+      @JsonKey(name: 'profile_picture') required this.profilePicture,
       required this.bio,
       required this.isVerified,
       required this.createdAt,
@@ -218,6 +219,7 @@ class _$UserDetailsImpl implements _UserDetails {
   @override
   final String email;
   @override
+  @JsonKey(name: 'profile_picture')
   final String profilePicture;
   @override
   final String bio;
@@ -278,7 +280,7 @@ abstract class _UserDetails implements UserDetails {
       {required final int id,
       required final String name,
       required final String email,
-      required final String profilePicture,
+      @JsonKey(name: 'profile_picture') required final String profilePicture,
       required final String bio,
       required final bool isVerified,
       required final String createdAt,
@@ -294,6 +296,7 @@ abstract class _UserDetails implements UserDetails {
   @override
   String get email;
   @override
+  @JsonKey(name: 'profile_picture')
   String get profilePicture;
   @override
   String get bio;
