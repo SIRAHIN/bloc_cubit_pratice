@@ -1,4 +1,4 @@
-import 'package:bloc_practice/data/models/todo_model.dart';
+import 'package:bloc_practice/data/models/todo_model/todo_model.dart';
 
 class TodoCubitState {
   final List<TodoModel> todoData;

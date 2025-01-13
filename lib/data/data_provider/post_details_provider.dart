@@ -1,4 +1,4 @@
-import 'package:bloc_practice/data/models/post_details_model.dart';
+import 'package:bloc_practice/data/models/post_details_model/post_details_model.dart';
 import 'package:http/http.dart' as http;
 
 class PostDetailsProvider {

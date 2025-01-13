@@ -1,5 +1,5 @@
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit_state.dart';
-import 'package:bloc_practice/data/models/todo_model.dart';
+import 'package:bloc_practice/data/models/todo_model/todo_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TodoCubit extends Cubit<TodoCubitState> {
@@ -10,19 +10,16 @@ class TodoCubit extends Cubit<TodoCubitState> {
   void addTodoData(String todoText) {
     //final List<TodoModel> newList = List<TodoModel>.from(state.todoData);
 
-    
-
     if (todoText.isEmpty) {
       addError('Title Can not be empty');
-      
+
       return;
     }
+
+    TodoModel data = TodoModel.fromJson({});
+
     newListType2.add(
-      TodoModel(
-        todoText,
-        DateTime.now(),
-      ),
-    );
+        TodoModel(todoText: todoText, todoTime: DateTime.now().toString()));
     emit(
       TodoCubitState(newListType2),
     );

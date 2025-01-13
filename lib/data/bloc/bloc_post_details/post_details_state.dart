@@ -1,5 +1,5 @@
-import 'package:bloc_practice/data/models/post_details_model.dart';
-import 'package:bloc_practice/data/models/post_model.dart';
+import 'package:bloc_practice/data/models/post_details_model/post_details_model.dart';
+import 'package:bloc_practice/data/models/post_model/post_model.dart';
 
 class PostDetailsState {}
 

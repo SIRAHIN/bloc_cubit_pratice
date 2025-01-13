@@ -1,6 +1,6 @@
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_event.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_state.dart';
-import 'package:bloc_practice/data/models/post_model.dart';
+import 'package:bloc_practice/data/models/post_model/post_model.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

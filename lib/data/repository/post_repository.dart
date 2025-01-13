@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:bloc_practice/data/data_provider/post_data_provider.dart';
-import 'package:bloc_practice/data/models/post_model.dart';
+import 'package:bloc_practice/data/models/post_model/post_model.dart';
 
 class PostRepository {
   final PostDataProvider postDataProvider;
