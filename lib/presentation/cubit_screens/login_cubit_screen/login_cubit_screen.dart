@@ -55,6 +55,11 @@ class _LoginBlocScreenState extends State<LoginCubitScreen> {
               MaterialPageRoute(
                 builder: (context) => CubitHomeScreen(
                   onPostSelected: (postId) {
+                    // if (postId == 1) {
+                    //   return 'Success';
+                    // } else {
+                    //   return ''
+                    // }
                     print(postId);
                   },
                 ),
