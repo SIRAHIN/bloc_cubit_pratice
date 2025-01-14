@@ -10,3 +10,7 @@ final getIt = GetIt.instance;
   asExtension: false, // default
 )
 void configureDependencies() => $initGetIt(getIt);
+
+// == Auto Register ApiService as a singleton (one instance for the whole app)
+// using injectable package == //
+// getIt.registerSingleton<ApiService>(ApiService());
