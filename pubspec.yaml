@@ -41,12 +41,18 @@ dependencies:
   image_picker: ^1.1.2
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
+  # add injectable to your dependencies  
+  injectable:  
+  # add get_it  
+  get_it: 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.4.2
   json_serializable: ^6.7.1
+  # add the generator to your dev_dependencies  
+  injectable_generator: 
   build_runner: ^2.4.6  
 
   # The "flutter_lints" package below contains a set of recommended lints to

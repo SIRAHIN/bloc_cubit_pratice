@@ -1,14 +1,14 @@
 class SingleTonDesign {
   
-   String? userID;
-   String? userNAME;
+   String userID = '';
+   String userNAME = '';
 
   static SingleTonDesign? _instance;
   SingleTonDesign._();
 
   
   // Instance without parameter and async //
-  static SingleTonDesign get singleTonInstance {
+  static SingleTonDesign get instance {
     if (_instance == null) {
       return _instance = SingleTonDesign._();
     } else {
@@ -17,7 +17,7 @@ class SingleTonDesign {
   }
   
   // Instance with parameter and async //
-  static Future<SingleTonDesign> instance(
+  static Future<SingleTonDesign> instanceFunction(
       {String? userId, String? userName}) async {
     if (_instance == null) {
       return _instance = SingleTonDesign._();

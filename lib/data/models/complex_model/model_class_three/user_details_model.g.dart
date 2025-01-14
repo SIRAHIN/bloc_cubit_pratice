@@ -13,7 +13,7 @@ _$UserDetailsImpl _$$UserDetailsImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       profilePicture: json['profile_picture'] as String,
       bio: json['bio'] as String,
-      isVerified: json['isVerified'] as bool,
+      isVerified: json['isVerified'] as bool? ?? false,
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
     );

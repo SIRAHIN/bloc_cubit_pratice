@@ -1,3 +1,4 @@
+import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_bloc.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_bloc.dart';
 import 'package:bloc_practice/data/bloc/counter/counter_bloc.dart';
@@ -25,7 +26,12 @@ import 'package:bloc_practice/presentation/cubit_screens/todo_screen/todo_list_s
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(const MyApp());
+//void main() => runApp(const MyApp());
+
+void main() {
+  configureDependencies();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -88,15 +94,16 @@ class MyApp extends StatelessWidget {
                   )),
 
           BlocProvider(
-              create: (context) => PostDetailsCubit(
-                    context.read<PostDetailsRepository>(),
-                  )),
+            create: (context) => PostDetailsCubit(
+              context.read<PostDetailsRepository>(),
+            ),
+          ),
 
           BlocProvider(create: (context) => ImagePickerCubit()),
 
-         // BlocProvider(create: (context) => SwitchBloc()),
+          // BlocProvider(create: (context) => SwitchBloc()),
 
-        //  BlocProvider(create: (context) => SliderBloc()),
+          //  BlocProvider(create: (context) => SliderBloc()),
 
           BlocProvider(create: (context) => SwitchSlideBloc()),
 
@@ -110,6 +117,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-

@@ -21,10 +21,10 @@ void voidTypeCallBackFunction(String userData) {
   // Initial Idea of SingleTon //
 
   // Get Instance from isntance function
-  SingleTonDesign.instance(userId: 'id', userName: 'Rahin');
+  SingleTonDesign.instanceFunction(userId: 'id', userName: 'Rahin');
 
   // Get Instance from Getter Method
-  SingleTonDesign.singleTonInstance.userID;
-  SingleTonDesign.singleTonInstance
-      .setUserNameAndPassword(userName: 'Rahin', userPassword: '**6767##');
+  SingleTonDesign.instance.userID;
+  
+  SingleTonDesign.instance.setUserNameAndPassword(userName: 'Rahin', userPassword: '**6767##');
 }

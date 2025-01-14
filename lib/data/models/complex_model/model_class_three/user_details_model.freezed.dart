@@ -22,9 +22,15 @@ UserDetails _$UserDetailsFromJson(Map<String, dynamic> json) {
 mixin _$UserDetails {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  String get email =>
+      throw _privateConstructorUsedError; /*
+    The issue arises because the JsonSerializable generator uses the Dart-style naming convention (camelCase) 
+    for the field names by default. In your JSON response, the key is written in snake_case (e.g., profile_picture). 
+    To map this correctly, you need to explicitly specify the JSON key using the @JsonKey annotation.
+    */
   @JsonKey(name: 'profile_picture')
-  String get profilePicture => throw _privateConstructorUsedError;
+  String get profilePicture =>
+      throw _privateConstructorUsedError; // Map snake_case to camelCase
   String get bio => throw _privateConstructorUsedError;
   bool get isVerified => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
@@ -205,7 +211,7 @@ class _$UserDetailsImpl implements _UserDetails {
       required this.email,
       @JsonKey(name: 'profile_picture') required this.profilePicture,
       required this.bio,
-      required this.isVerified,
+      this.isVerified = false,
       required this.createdAt,
       required this.updatedAt});
 
@@ -218,12 +224,19 @@ class _$UserDetailsImpl implements _UserDetails {
   final String name;
   @override
   final String email;
+/*
+    The issue arises because the JsonSerializable generator uses the Dart-style naming convention (camelCase) 
+    for the field names by default. In your JSON response, the key is written in snake_case (e.g., profile_picture). 
+    To map this correctly, you need to explicitly specify the JSON key using the @JsonKey annotation.
+    */
   @override
   @JsonKey(name: 'profile_picture')
   final String profilePicture;
+// Map snake_case to camelCase
   @override
   final String bio;
   @override
+  @JsonKey()
   final bool isVerified;
   @override
   final String createdAt;
@@ -282,7 +295,7 @@ abstract class _UserDetails implements UserDetails {
       required final String email,
       @JsonKey(name: 'profile_picture') required final String profilePicture,
       required final String bio,
-      required final bool isVerified,
+      final bool isVerified,
       required final String createdAt,
       required final String updatedAt}) = _$UserDetailsImpl;
 
@@ -294,10 +307,15 @@ abstract class _UserDetails implements UserDetails {
   @override
   String get name;
   @override
-  String get email;
+  String
+      get email; /*
+    The issue arises because the JsonSerializable generator uses the Dart-style naming convention (camelCase) 
+    for the field names by default. In your JSON response, the key is written in snake_case (e.g., profile_picture). 
+    To map this correctly, you need to explicitly specify the JSON key using the @JsonKey annotation.
+    */
   @override
   @JsonKey(name: 'profile_picture')
-  String get profilePicture;
+  String get profilePicture; // Map snake_case to camelCase
   @override
   String get bio;
   @override

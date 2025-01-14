@@ -16,7 +16,7 @@ class UserDetails with _$UserDetails {
     */
     @JsonKey(name: 'profile_picture') required String profilePicture, // Map snake_case to camelCase
     required String bio,
-    required bool isVerified,
+    @Default(false) bool isVerified,
     required String createdAt,
     required String updatedAt,
   }) = _UserDetails;
