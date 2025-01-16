@@ -111,7 +111,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Material App',
-          home: PostScreenBloc(),
+          home: PostScreenCubit(),
         ),
       ),
     );

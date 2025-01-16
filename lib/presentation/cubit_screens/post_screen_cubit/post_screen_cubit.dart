@@ -38,10 +38,51 @@ class _PostScreenBlocState extends State<PostScreenCubit> {
                 var postData = state.postModel[index];
                 return Card(
                   child: ListTile(
-                    title: Text(postData.title.toString()),
-                    subtitle: Text(postData.body.toString()),
+                    title: Text(
+                      postData.title.toString(),
+                      maxLines: 2,
+                    ),
+                    subtitle: Text(
+                      postData.body.toString(),
+                      maxLines: 5,
+                    ),
+                    trailing: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // Expanded(
+                        //   child: IconButton(
+                        //       onPressed: () {}, icon: Icon(Icons.delete)),
+                        // ),
+                        // SizedBox(
+                        //   height: 40,
+                        // ),
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {
+                                if (state.postFavoriteList.contains(postData)) {
+                                  context
+                                      .read<CubitPost>()
+                                      .removeFavoritePost(postItem: postData);
+                                } else {
+                                  context
+                                      .read<CubitPost>()
+                                      .addFavoritePost(postItem: postData);
+                                }
+                              },
+                              icon: state.postFavoriteList.contains(postData) ? Icon(Icons.favorite, color: Colors.red,) : Icon(Icons.favorite_outline, color: Colors.black,)),
+                        ),
+                      ],
+                    ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetailsScreenCubit(postID: postData.id!,)));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PostDetailsScreenCubit(
+                            postID: postData.id!,
+                          ),
+                        ),
+                      );
                     },
                   ),
                 );

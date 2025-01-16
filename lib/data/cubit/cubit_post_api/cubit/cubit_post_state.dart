@@ -8,8 +8,9 @@ final class CubitPostLoadingState extends CubitPostState {}
 
 final class CubitPostSuccessState extends CubitPostState {
   final List<PostModel> postModel;
+  final List<PostModel> postFavoriteList;
 
-  CubitPostSuccessState(this.postModel);
+  CubitPostSuccessState(this.postModel, this.postFavoriteList);
 }
 
 final class CubitPostFailureState extends CubitPostState {
