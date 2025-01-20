@@ -27,7 +27,7 @@ _i174.GetIt $initGetIt(
     environmentFilter,
   );
   gh.factory<_i738.ApiService>(() => _i738.ApiService());
-  gh.factory<_i48.TestService>(() => _i48.TestService());
+  gh.singleton<_i48.TestService>(() => _i48.TestService());
   gh.factory<_i537.UserRepository>(
       () => _i537.UserRepository(gh<_i738.ApiService>()));
   return getIt;
