@@ -23,6 +23,7 @@ import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/ima
 import 'package:bloc_practice/presentation/cubit_screens/post_screen_cubit/post_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/switch_slider_cubit_screen/switch_slider_cubit_scree.dart';
 import 'package:bloc_practice/presentation/cubit_screens/todo_screen/todo_list_screen.dart';
+import 'package:bloc_practice/presentation/ui_practice/custom_scroll.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -111,7 +112,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Material App',
-          home: PostScreenCubit(),
+          home: CustomBottomSheet(),
         ),
       ),
     );
