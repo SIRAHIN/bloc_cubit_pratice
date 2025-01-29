@@ -1,3 +1,4 @@
+import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_event.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_state.dart';
 import 'package:bloc_practice/data/models/post_model/post_model.dart';
@@ -5,12 +6,12 @@ import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ApiCallingBloc extends Bloc<ApiCallingEvent, ApiCallingState> {
-  final PostRepository postRepository;
+  final PostRepository postRepository = getIt<PostRepository>();
 
   List<PostModel> postFavoriteList = [];
   List<PostModel> postModel = [];
 
-  ApiCallingBloc(this.postRepository) : super(ApiCallingInitial()) {
+  ApiCallingBloc() : super(ApiCallingInitial()) {
     on<ApiFetchEvent>((event, emit) async {
       emit(ApiCallingLoading());
       try {

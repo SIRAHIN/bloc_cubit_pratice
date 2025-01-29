@@ -1,3 +1,4 @@
+import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_event.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_state.dart';
 import 'package:bloc_practice/data/repository/post_details_repository.dart';
@@ -5,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostDetailsBloc extends Bloc<PostDetailsEvent, PostDetailsState>{
     
-    PostDetailsRepository postDetailsRepository;
-    PostDetailsBloc(this.postDetailsRepository) : super(PostDetailsInitial()) {
+    PostDetailsRepository postDetailsRepository = getIt<PostDetailsRepository>();
+    PostDetailsBloc() : super(PostDetailsInitial()) {
     
     on<PostDetailsFetchEvent>((event, emit) async {
       emit(PostDetailsLoading());

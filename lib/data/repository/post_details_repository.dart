@@ -1,12 +1,15 @@
 import 'dart:convert';
 
+import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
 import 'package:bloc_practice/data/models/post_details_model/post_details_model.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class PostDetailsRepository {
-  final PostDetailsProvider postDetailsProvider;
+  final PostDetailsProvider postDetailsProvider = getIt<PostDetailsProvider>();
 
-  PostDetailsRepository({required this.postDetailsProvider});
+  PostDetailsRepository();
 
   Future<PostDetailsModel> getPostDetails(int postId) async {
     try {

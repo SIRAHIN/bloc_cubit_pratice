@@ -1,10 +1,13 @@
 import 'dart:convert';
+import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/data_provider/post_data_provider.dart';
 import 'package:bloc_practice/data/models/post_model/post_model.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class PostRepository {
-  final PostDataProvider postDataProvider;
-  PostRepository({required this.postDataProvider});
+  final PostDataProvider postDataProvider = getIt<PostDataProvider>();
+  PostRepository();
 
   List<PostModel> postModel = [];
 

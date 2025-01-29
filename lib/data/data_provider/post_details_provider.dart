@@ -1,6 +1,8 @@
 import 'package:bloc_practice/data/models/post_details_model/post_details_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
+@injectable
 class PostDetailsProvider {
   Future<String> getPostDetails(int postId) async {
        try {
