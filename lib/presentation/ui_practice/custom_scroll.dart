@@ -8,8 +8,10 @@ class CustomBottomSheet extends StatefulWidget {
 }
 
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
-  bool scrolledMaxTop = false;
+  
   double _currentSheetPosition = 0.2; // Initial position of the bottom sheet
+  ValueNotifier<bool> scrolledMaxTop = ValueNotifier(false);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +20,15 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
       body: Stack(
         children: [
           // Upper Container
-          if (!scrolledMaxTop)
-            Container(
-              height: 300,
-              width: 400,
-              color: Colors.red,
+            ValueListenableBuilder(
+              valueListenable: scrolledMaxTop,
+              builder: (context, value, child) {
+                return !value ? Container(
+                  height: 300,
+                  width: 400,
+                  color: Colors.red,
+                ) : Container();
+              },
             ),
 
           // DraggableScrollableSheet
@@ -33,12 +39,13 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             builder: (context, scrollController) {
               return NotificationListener<DraggableScrollableNotification>(
                 onNotification: (notification) {
+                  
                   // Update the current position of the sheet
                   _currentSheetPosition = notification.extent;
+                  
                   // Update the visibility of the top widget based on the sheet position
-                  setState(() {
-                    scrolledMaxTop = _currentSheetPosition >= 0.7;
-                  });
+                  scrolledMaxTop.value = _currentSheetPosition >= 0.7;
+              
                   return true;
                 },
                 child: Container(
