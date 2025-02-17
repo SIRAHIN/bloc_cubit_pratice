@@ -26,6 +26,7 @@ import 'package:bloc_practice/presentation/cubit_screens/todo_screen/todo_list_s
 import 'package:bloc_practice/presentation/go_router_example/home_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/routes_manager.dart';
 import 'package:bloc_practice/presentation/ui_practice/custom_scroll.dart';
+import 'package:bloc_practice/presentation/ui_practice/scrolling_forward_reverse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -116,7 +117,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Material App',
-          home: PostScreenBloc(),
+          home: ScrollingForwardReverse(),
           //routerConfig: RoutesManager.routerConfig,
         ),
      // ),
