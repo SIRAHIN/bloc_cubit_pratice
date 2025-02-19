@@ -117,7 +117,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
           title: 'Material App',
-          home: CustomBottomSheet(),
+          home: PostScreenBloc(),
           //routerConfig: RoutesManager.routerConfig,
         ),
      // ),

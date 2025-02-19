@@ -17,13 +17,15 @@ class PostRepository {
 
       print("User Data :$userData");
 
-      List data = jsonDecode(userData);
+      // For Http Request //
+      // List data = jsonDecode(userData);
 
-      for (var element in data) {
-        postModel.add(PostModel.fromJson(element));
-      }
+      // for (var element in data) {
+      //   postModel.add(PostModel.fromJson(element));
+      // }
 
-      return postModel;
+      // For Retrofit Request //
+      return postModel = userData ;
     } catch (e) {
       throw Exception(e);
     }

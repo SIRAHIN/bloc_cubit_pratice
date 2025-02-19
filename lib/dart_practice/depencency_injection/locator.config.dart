@@ -31,14 +31,12 @@ _i174.GetIt $initGetIt(
     environmentFilter,
   );
   gh.factory<_i738.ApiService>(() => _i738.ApiService());
+  gh.factory<_i180.PostRepository>(() => _i180.PostRepository());
+  gh.factory<_i61.PostDetailsRepository>(() => _i61.PostDetailsRepository());
   gh.factory<_i588.PostDataProvider>(() => _i588.PostDataProvider());
   gh.factory<_i438.PostDetailsProvider>(() => _i438.PostDetailsProvider());
   gh.singleton<_i48.TestService>(() => _i48.TestService());
-  gh.factory<_i180.PostRepository>(() =>
-      _i180.PostRepository());
   gh.factory<_i537.UserRepository>(
       () => _i537.UserRepository(gh<_i738.ApiService>()));
-  gh.factory<_i61.PostDetailsRepository>(() => _i61.PostDetailsRepository(
-      ));
   return getIt;
 }

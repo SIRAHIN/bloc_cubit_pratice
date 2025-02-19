@@ -14,7 +14,11 @@ class PostDetailsRepository {
   Future<PostDetailsModel> getPostDetails(int postId) async {
     try {
       var detailsData = await postDetailsProvider.getPostDetails(postId);
-      return PostDetailsModel.fromJson(jsonDecode(detailsData));
+      // For Http Request //
+      //return PostDetailsModel.fromJson(jsonDecode(detailsData));
+      
+      // Retrofit Request //
+      return detailsData;
     } catch (e) {
       // Handle exceptions by rethrowing or returning a default value
       print("Error fetching post details: $e");
