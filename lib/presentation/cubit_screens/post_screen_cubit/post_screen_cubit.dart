@@ -19,8 +19,8 @@ class _PostScreenBlocState extends State<PostScreenCubit> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<CubitPost>().fetchPost();
-    print("Api Fetch Event Called From Cubit");
+    // context.read<CubitPost>().fetchPost();
+    // print("Api Fetch Event Called From Cubit");
   }
 
   @override
@@ -28,7 +28,11 @@ class _PostScreenBlocState extends State<PostScreenCubit> {
     return Scaffold(
       body: BlocBuilder<CubitPost, CubitPostState>(
         builder: (context, state) {
-          if (state is CubitPostLoadingState) {
+          if(state is CubitPostInitialState){
+            context.read<CubitPost>().fetchPost();
+            return Center(child: Text('Loading...!'),);
+          }
+          else if (state is CubitPostLoadingState) {
             return Center(child: CircularProgressIndicator());
           } else if (state is CubitPostSuccessState) {
             return ListView.builder(

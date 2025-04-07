@@ -1,3 +1,4 @@
+import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/models/post_model/post_model.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,12 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'cubit_post_state.dart';
 
 class CubitPost extends Cubit<CubitPostState> {
-  PostRepository postRepository;
+  //PostRepository postRepository;
+
+  PostRepository postRepository = getIt<PostRepository>();
 
   List<PostModel> postListData = [];
   List<PostModel> postFavoriteData = [];
 
-  CubitPost(this.postRepository) : super(CubitPostInitialState());
+  CubitPost() : super(CubitPostInitialState());
 
   void fetchPost() async {
     emit(CubitPostLoadingState());

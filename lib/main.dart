@@ -42,85 +42,86 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    // MultiRepositoryProvider(
-    //   providers: [
-    //     RepositoryProvider(
-    //       create: (context) => PostRepository(
-    //         postDataProvider: PostDataProvider(),
-    //       ),
-    //     ),
-    //     RepositoryProvider(
-    //       create: (context) => PostDetailsRepository(
-    //         postDetailsProvider: PostDetailsProvider(),
-    //       ),
-    //     ),
-    //   ],
-    //   child: 
-      MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => CounterCubit(),
-          ),
-          BlocProvider(
-            create: (context) => CounterBlocs(),
-          ),
-          BlocProvider(
-            create: (context) => LoadingCubit(),
-          ),
-          BlocProvider(
-            create: (context) => LoadingBloc(),
-          ),
-          BlocProvider(
-            create: (context) => TodoCubit(),
-          ),
-          BlocProvider(
-            create: (context) => LoginBloc(),
-          ),
-          BlocProvider(
-            create: (context) => LoginCubit(),
-          ),
+    return
+        // MultiRepositoryProvider(
+        //   providers: [
+        //     RepositoryProvider(
+        //       create: (context) => PostRepository(
+        //         postDataProvider: PostDataProvider(),
+        //       ),
+        //     ),
+        //     RepositoryProvider(
+        //       create: (context) => PostDetailsRepository(
+        //         postDetailsProvider: PostDetailsProvider(),
+        //       ),
+        //     ),
+        //   ],
+        //   child:
+        MultiBlocProvider(
+      providers: [
 
-          // Bloc Api Calling Provider //
-          BlocProvider(
-            create: (context) => ApiCallingBloc(
-              
-            ),
-          ),
-          BlocProvider(
-            create: (context) => PostDetailsBloc(
-             
-            ),
-          ),
-
-          // Cubit Api Calling Provider //
-          BlocProvider(
-              create: (context) => CubitPost(
-                    context.read<PostRepository>(),
-                  )),
-
-          BlocProvider(
-            create: (context) => PostDetailsCubit(
-              context.read<PostDetailsRepository>(),
-            ),
-          ),
-
-          BlocProvider(create: (context) => ImagePickerCubit()),
-
-          // BlocProvider(create: (context) => SwitchBloc()),
-
-          //  BlocProvider(create: (context) => SliderBloc()),
-
-          BlocProvider(create: (context) => SwitchSlideBloc()),
-
-          BlocProvider(create: (context) => SwitchSliderCubit()),
-        ],
-        child: MaterialApp(
-          title: 'Material App',
-          home: PostScreenBloc(),
-          //routerConfig: RoutesManager.routerConfig,
+        // == Respository Provier == //
+        // RepositoryProvider(
+        //   create: (context) => PostRepository(),
+        // ),
+        BlocProvider(
+          create: (context) => CounterCubit(),
         ),
-     // ),
+        BlocProvider(
+          create: (context) => CounterBlocs(),
+        ),
+        BlocProvider(
+          create: (context) => LoadingCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LoadingBloc(),
+        ),
+        BlocProvider(
+          create: (context) => TodoCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LoginBloc(),
+        ),
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        ),
+
+        // Bloc Api Calling Provider //
+        BlocProvider(
+          create: (context) => ApiCallingBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PostDetailsBloc(),
+        ),
+
+        // Cubit Api Calling Provider //
+        BlocProvider(
+            create: (context) => CubitPost(
+                  // getIt<PostRepository>()
+                )),
+
+        BlocProvider(
+          create: (context) => PostDetailsCubit(
+            context.read<PostDetailsRepository>(),
+          ),
+        ),
+
+        BlocProvider(create: (context) => ImagePickerCubit()),
+
+        // BlocProvider(create: (context) => SwitchBloc()),
+
+        //  BlocProvider(create: (context) => SliderBloc()),
+
+        BlocProvider(create: (context) => SwitchSlideBloc()),
+
+        BlocProvider(create: (context) => SwitchSliderCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Material App',
+        home: PostScreenCubit(),
+        //routerConfig: RoutesManager.routerConfig,
+      ),
+      // ),
     );
   }
 }
