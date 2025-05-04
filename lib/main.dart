@@ -118,7 +118,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Material App',
-        home: PostScreenCubit(),
+        home: SwitchSliderCubitScree(),
         //routerConfig: RoutesManager.routerConfig,
       ),
       // ),

@@ -5,16 +5,16 @@ import 'package:meta/meta.dart';
 part 'switch_slider_state.dart';
 
 class SwitchSliderCubit extends Cubit<SwitchSliderCubitState> {
-  SwitchSliderCubit() : super(ToggleSwitchCubitState());
+  SwitchSliderCubit() : super(SwitchSliderCubitState());
 
 
   void toggleSwitch() {
-    emit(ToggleSwitchCubitState(isSwitched: !state.isSwitched, sliderValue: state.sliderValue));
+    emit(state.copyWith(isSwitched: !state.isSwitched));
   }
   
 
   void updateSliderValue(double sliderValueUpdate){
-    emit(SliderCubitState(sliderValue: sliderValueUpdate, isSwitched: state.isSwitched));
+    emit(SwitchSliderCubitState().copyWith(sliderValue: state.sliderValue));
   }
 
   
