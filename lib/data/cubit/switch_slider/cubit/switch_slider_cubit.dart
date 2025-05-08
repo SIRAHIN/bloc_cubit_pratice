@@ -14,7 +14,7 @@ class SwitchSliderCubit extends Cubit<SwitchSliderCubitState> {
   
 
   void updateSliderValue(double sliderValueUpdate){
-    emit(SwitchSliderCubitState().copyWith(sliderValue: state.sliderValue));
+    emit(state.copyWith(sliderValue: sliderValueUpdate));
   }
 
   

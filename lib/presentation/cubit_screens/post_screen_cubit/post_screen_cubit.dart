@@ -28,13 +28,13 @@ class _PostScreenBlocState extends State<PostScreenCubit> {
     return Scaffold(
       body: BlocBuilder<CubitPost, CubitPostState>(
         builder: (context, state) {
-          if(state is CubitPostInitialState){
+          if(state.status == CubitPostStatus.initial){
             context.read<CubitPost>().fetchPost();
             return Center(child: Text('Loading...!'),);
           }
-          else if (state is CubitPostLoadingState) {
+          else if (state.status == CubitPostStatus.loading) {
             return Center(child: CircularProgressIndicator());
-          } else if (state is CubitPostSuccessState) {
+          } else if (state.status == CubitPostStatus.success) {
             return ListView.builder(
               shrinkWrap: true,
               itemCount: state.postModel.length,

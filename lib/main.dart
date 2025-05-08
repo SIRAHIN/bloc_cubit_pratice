@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(
           create: (context) => PostDetailsCubit(
-            context.read<PostDetailsRepository>(),
+            getIt<PostDetailsRepository>(),
           ),
         ),
 
@@ -118,7 +118,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Material App',
-        home: SwitchSliderCubitScree(),
+        home: PostScreenCubit(),
         //routerConfig: RoutesManager.routerConfig,
       ),
       // ),

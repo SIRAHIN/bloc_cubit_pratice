@@ -1,20 +1,44 @@
 part of 'cubit_post.dart';
 
-sealed class CubitPostState {}
+enum CubitPostStatus { initial, loading, success, failure }
 
-final class CubitPostInitialState extends CubitPostState {}
-
-final class CubitPostLoadingState extends CubitPostState {}
-
-final class CubitPostSuccessState extends CubitPostState {
+ class CubitPostState {
+  final CubitPostStatus status;
   final List<PostModel> postModel;
   final List<PostModel> postFavoriteList;
+  final String errorString;
 
-  CubitPostSuccessState(this.postModel, this.postFavoriteList);
+  CubitPostState({this.postModel = const [], this.postFavoriteList = const [], this.status = CubitPostStatus.initial, this.errorString = ''});
+
+  CubitPostState copyWith({
+    List<PostModel>? postModel,
+    List<PostModel>? postFavoriteList,
+    CubitPostStatus? status,
+    String? errorString,
+  }) {
+    return CubitPostState(
+        postFavoriteList: postFavoriteList ?? this.postFavoriteList,
+        postModel: postModel ?? this.postModel,
+        status: status ?? this.status,
+        errorString: errorString ?? this.errorString
+
+    );
+  }
 }
 
-final class CubitPostFailureState extends CubitPostState {
-  final String failureText;
+// final class CubitPostInitialState extends CubitPostState {}
 
-  CubitPostFailureState(this.failureText);
-}
+// final class CubitPostLoadingState extends CubitPostState {}
+
+// final class CubitPostSuccessState extends CubitPostState {
+//   final List<PostModel> postModel;
+//   final List<PostModel> postFavoriteList;
+
+//   CubitPostSuccessState(this.postModel, this.postFavoriteList);
+// }
+
+// final class CubitPostFailureState extends CubitPostState {
+//   final String failureText;
+
+//   CubitPostFailureState(this.failureText);
+// }

@@ -13,26 +13,26 @@ class CubitPost extends Cubit<CubitPostState> {
   List<PostModel> postListData = [];
   List<PostModel> postFavoriteData = [];
 
-  CubitPost() : super(CubitPostInitialState());
+  CubitPost() : super(CubitPostState());
 
   void fetchPost() async {
-    emit(CubitPostLoadingState());
+    emit(state.copyWith(status: CubitPostStatus.loading));
     try {
       List<PostModel> postData = await postRepository.fetchtedPost();
       postListData.addAll(postData);
-      emit(CubitPostSuccessState(postListData, postFavoriteData));
+      emit(state.copyWith(postModel: postListData, status: CubitPostStatus.success));
     } catch (e) {
-      emit(CubitPostFailureState(e.toString()));
+      emit(state.copyWith(errorString: e.toString()));
     }
   }
 
   void addFavoritePost({required PostModel postItem}) {
     postFavoriteData.add(postItem);
-    emit(CubitPostSuccessState(postListData, postFavoriteData));
+    emit(state.copyWith(postFavoriteList: postFavoriteData));
   }
 
   void removeFavoritePost({required PostModel postItem}) {
     postFavoriteData.remove(postItem);
-    emit(CubitPostSuccessState(postListData, postFavoriteData));
+    emit(state.copyWith(postFavoriteList: postFavoriteData));
   }
 }
