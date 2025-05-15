@@ -116,10 +116,10 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(create: (context) => SwitchSliderCubit()),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Material App',
-        home: PostScreenCubit(),
-        //routerConfig: RoutesManager.routerConfig,
+        //home: PostScreenCubit(),
+        routerConfig: RoutesManager.routerConfig,
       ),
       // ),
     );
