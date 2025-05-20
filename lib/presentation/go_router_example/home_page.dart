@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
             Text('Go to Next Page'),
             ElevatedButton(
                 onPressed: () {
-                  context.go('/second-home-page?type=sHomePage');
+                  context.go('/second-home-page?type=typeFromHomePage');
                 },
                 child: Text('Press Here!'))
           ],

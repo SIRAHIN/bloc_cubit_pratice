@@ -17,7 +17,12 @@ class _SecondHomePageState extends State<SecondHomePage> {
   // This method is used to change the color value based on the query parameter //
   // in the URL. It listens to the route information provider and updates the value //
   void changeColorValue() {
-    if (typeValue == 'sHomePage') {
+    
+    final type = GoRouter.of(context).routeInformationProvider.value.uri;
+    final queryParams = type.queryParameters;
+    String colorChangeValue = queryParams['type']!;
+
+    if (colorChangeValue == 'typeFromButton') {
       value = 0.9;
       setState(() {});
     } else {
@@ -34,14 +39,14 @@ class _SecondHomePageState extends State<SecondHomePage> {
     final queryParams = type.queryParameters;
     typeValue = queryParams['type'];
 
-    // Listen to the route information provider to get the query parameters //
+    // Setup a Listener for the route to act according to its typesValue //
     GoRouter.of(context).routeInformationProvider.addListener(changeColorValue);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (typeValue == 'sHomePage') {
+    if (typeValue == 'typeFromHomePage') {
       return Scaffold(
         body: Container(
           width: double.maxFinite,
@@ -59,7 +64,7 @@ class _SecondHomePageState extends State<SecondHomePage> {
                   onPressed: () async {
                     //context.go('/second-home-page');
                     RoutesManager.routerConfig
-                        .go('/second-home-page?type=sHomePage');
+                        .go('/second-home-page?type=typeFromButton');
                   },
                   child: Text('Press Here!'))
             ],
