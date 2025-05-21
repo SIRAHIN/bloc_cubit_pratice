@@ -22,7 +22,7 @@ class CubitPost extends Cubit<CubitPostState> {
       postListData.addAll(postData);
       emit(state.copyWith(postModel: postListData, status: CubitPostStatus.success));
     } catch (e) {
-      emit(state.copyWith(errorString: e.toString()));
+      emit(state.copyWith(errorString: e.toString(), status: CubitPostStatus.failure));
     }
   }
 

@@ -28,11 +28,12 @@ class _PostScreenBlocState extends State<PostScreenCubit> {
     return Scaffold(
       body: BlocBuilder<CubitPost, CubitPostState>(
         builder: (context, state) {
-          if(state.status == CubitPostStatus.initial){
+          if (state.status == CubitPostStatus.initial) {
             context.read<CubitPost>().fetchPost();
-            return Center(child: Text('Loading...!'),);
-          }
-          else if (state.status == CubitPostStatus.loading) {
+            return Center(
+              child: Text('Loading...!'),
+            );
+          } else if (state.status == CubitPostStatus.loading) {
             return Center(child: CircularProgressIndicator());
           } else if (state.status == CubitPostStatus.success) {
             return ListView.builder(
@@ -74,7 +75,15 @@ class _PostScreenBlocState extends State<PostScreenCubit> {
                                       .addFavoritePost(postItem: postData);
                                 }
                               },
-                              icon: state.postFavoriteList.contains(postData) ? Icon(Icons.favorite, color: Colors.red,) : Icon(Icons.favorite_outline, color: Colors.black,)),
+                              icon: state.postFavoriteList.contains(postData)
+                                  ? Icon(
+                                      Icons.favorite,
+                                      color: Colors.red,
+                                    )
+                                  : Icon(
+                                      Icons.favorite_outline,
+                                      color: Colors.black,
+                                    )),
                         ),
                       ],
                     ),
@@ -92,6 +101,8 @@ class _PostScreenBlocState extends State<PostScreenCubit> {
                 );
               },
             );
+          } else if (state.status == CubitPostStatus.failure) {
+            return Center(child: Text(state.errorString));
           } else {
             return Center(child: Text('No Data'));
           }
