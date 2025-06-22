@@ -24,14 +24,14 @@ class PostDataProvider {
 
       // Retrofit Request //
       Dio dio = Dio();
-      dio.options.baseUrl = 'https://jsonplaceholder.typicode.com/';
+      dio.options.baseUrl = 'https://jsonplaceholder.typicode.com';
       final service = ApiService(dio);
       final HttpResponse<List<PostModel>> response = await service.getUsers();
       print("Response Status Code : ${response.response.statusCode}");
       return response.data;
       
     } catch (e) {
-      throw Exception(e);
+      throw Exception(e.toString());
     }
   }
 }
