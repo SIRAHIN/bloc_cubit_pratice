@@ -11,6 +11,7 @@ import 'package:bloc_practice/data/cubit/cubit_post_details/cubit/post_details_c
 import 'package:bloc_practice/data/cubit/image_picker_cubit/cubit/image_picker_cubit.dart';
 import 'package:bloc_practice/data/cubit/loader/loading_cubit.dart';
 import 'package:bloc_practice/data/cubit/login/login_cubit.dart';
+import 'package:bloc_practice/data/cubit/status_cubit/status_cubit.dart';
 import 'package:bloc_practice/data/cubit/switch_slider/cubit/switch_slider_cubit.dart';
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit.dart';
 import 'package:bloc_practice/data/data_provider/post_data_provider.dart';
@@ -21,6 +22,7 @@ import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_sc
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/post_screen_cubit/post_screen_cubit.dart';
+import 'package:bloc_practice/presentation/cubit_screens/status_cubit_screen/status_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/switch_slider_cubit_screen/switch_slider_cubit_scree.dart';
 import 'package:bloc_practice/presentation/cubit_screens/todo_screen/todo_list_screen.dart';
 import 'package:bloc_practice/presentation/go_router_example/home_page.dart';
@@ -33,6 +35,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 //void main() => runApp(const MyApp());
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   runApp(const MyApp());
 }
@@ -115,10 +118,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => SwitchSlideBloc()),
 
         BlocProvider(create: (context) => SwitchSliderCubit()),
+
+        BlocProvider(create: (context) => StatusCubit()),
       ],
       child: MaterialApp(
         title: 'Material App',
-        home: PostScreenCubit(),
+        home: StatusCubitScreen(),
         //routerConfig: RoutesManager.routerConfig,
       ),
       // ),
