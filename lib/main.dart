@@ -1,3 +1,4 @@
+import 'package:bloc_practice/dart_practice/context_mounted_test/page1.dart';
 import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_bloc.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_bloc.dart';
@@ -123,7 +124,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Material App',
-        home: StatusCubitScreen(),
+        home: Page1(),
         //routerConfig: RoutesManager.routerConfig,
       ),
       // ),
