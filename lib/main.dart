@@ -5,6 +5,7 @@ import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_bloc.dart
 import 'package:bloc_practice/data/bloc/counter/counter_bloc.dart';
 import 'package:bloc_practice/data/bloc/loader/loader_bloc.dart';
 import 'package:bloc_practice/data/bloc/login/login_bloc.dart';
+import 'package:bloc_practice/data/bloc/status_bloc/status_bloc.dart';
 import 'package:bloc_practice/data/bloc/switch_slider/bloc/switch_slider_bloc.dart';
 import 'package:bloc_practice/data/cubit/counter/counter_cubit.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_api/cubit/cubit_post.dart';
@@ -20,6 +21,7 @@ import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
 import 'package:bloc_practice/data/repository/post_details_repository.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
+import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/post_screen_cubit/post_screen_cubit.dart';
@@ -121,10 +123,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => SwitchSliderCubit()),
 
         BlocProvider(create: (context) => StatusCubit()),
+
+        BlocProvider(create: (context) => TaskStatusBloc()),
       ],
       child: MaterialApp(
         title: 'Material App',
-        home: Page1(),
+        home: StatusBlocScreen(),
         //routerConfig: RoutesManager.routerConfig,
       ),
       // ),
