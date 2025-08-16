@@ -44,7 +44,7 @@ import 'package:toastification/toastification.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  getIt<InternetService>().initializeInternetService();
+  getIt<InternetService>().initializeInternetService(isFirstTime: true);
   runApp(const MyApp());
 }
 
