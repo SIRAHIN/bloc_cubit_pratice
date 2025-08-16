@@ -11,6 +11,7 @@ import 'package:bloc_practice/data/cubit/counter/counter_cubit.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_api/cubit/cubit_post.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_details/cubit/post_details_cubit.dart';
 import 'package:bloc_practice/data/cubit/image_picker_cubit/cubit/image_picker_cubit.dart';
+import 'package:bloc_practice/data/cubit/internet_status/internet_status_cubit.dart';
 import 'package:bloc_practice/data/cubit/loader/loading_cubit.dart';
 import 'package:bloc_practice/data/cubit/login/login_cubit.dart';
 import 'package:bloc_practice/data/cubit/status_cubit/status_cubit.dart';
@@ -20,10 +21,12 @@ import 'package:bloc_practice/data/data_provider/post_data_provider.dart';
 import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
 import 'package:bloc_practice/data/repository/post_details_repository.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
+import 'package:bloc_practice/data/service/internet_service/internet_service.dart';
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
+import 'package:bloc_practice/presentation/cubit_screens/internect_connection_status_screen/internet_connection_status_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/post_screen_cubit/post_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/status_cubit_screen/status_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/switch_slider_cubit_screen/switch_slider_cubit_scree.dart';
@@ -34,12 +37,14 @@ import 'package:bloc_practice/presentation/ui_practice/custom_scroll.dart';
 import 'package:bloc_practice/presentation/ui_practice/scrolling_forward_reverse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toastification/toastification.dart';
 
 //void main() => runApp(const MyApp());
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  getIt<InternetService>().initializeInternetService();
   runApp(const MyApp());
 }
 
@@ -125,11 +130,15 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => StatusCubit()),
 
         BlocProvider(create: (context) => TaskStatusBloc()),
+
+        BlocProvider(create: (context) => InternetStatusCubit(service: getIt<InternetService>())),
       ],
-      child: MaterialApp(
-        title: 'Material App',
-        home: StatusBlocScreen(),
-        //routerConfig: RoutesManager.routerConfig,
+      child: ToastificationWrapper(
+        child: MaterialApp(
+          title: 'Material App',
+          home: InternetConnectionStatusScreen(),
+          //routerConfig: RoutesManager.routerConfig,
+        ),
       ),
       // ),
     );

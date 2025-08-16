@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/dio.dart';
 
-import '../api_service/api_service.dart';
+import '../service/api_service/api_service.dart';
 
 @injectable
 class PostDataProvider {

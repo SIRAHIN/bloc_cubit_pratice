@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
-import '../api_service/api_service.dart';
+import '../service/api_service/api_service.dart';
 
 @injectable
 class PostDetailsProvider {
