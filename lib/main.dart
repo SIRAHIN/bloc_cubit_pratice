@@ -136,7 +136,7 @@ class MyApp extends StatelessWidget {
       child: ToastificationWrapper(
         child: MaterialApp(
           title: 'Material App',
-          home: InternetConnectionStatusScreen(),
+          home: StatusCubitScreen(),
           //routerConfig: RoutesManager.routerConfig,
         ),
       ),
