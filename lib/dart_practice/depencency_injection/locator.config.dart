@@ -11,6 +11,8 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../data/cubit/cubit_post_details/cubit/post_details_cubit.dart'
+    as _i5;
 import '../../data/data_provider/post_data_provider.dart' as _i588;
 import '../../data/data_provider/post_details_provider.dart' as _i438;
 import '../../data/repository/post_details_repository.dart' as _i61;
@@ -40,5 +42,7 @@ _i174.GetIt $initGetIt(
   gh.singleton<_i872.InternetService>(() => _i872.InternetService());
   gh.factory<_i537.UserRepository>(
       () => _i537.UserRepository(gh<_i738.ApiService>()));
+  gh.factory<_i5.PostDetailsCubit>(
+      () => _i5.PostDetailsCubit(gh<_i61.PostDetailsRepository>()));
   return getIt;
 }

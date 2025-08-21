@@ -112,9 +112,7 @@ class MyApp extends StatelessWidget {
                 )),
 
         BlocProvider(
-          create: (context) => PostDetailsCubit(
-            getIt<PostDetailsRepository>(),
-          ),
+          create: (context) => getIt<PostDetailsCubit>(),
         ),
 
         BlocProvider(create: (context) => ImagePickerCubit()),
