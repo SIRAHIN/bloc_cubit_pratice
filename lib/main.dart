@@ -7,6 +7,7 @@ import 'package:bloc_practice/data/bloc/loader/loader_bloc.dart';
 import 'package:bloc_practice/data/bloc/login/login_bloc.dart';
 import 'package:bloc_practice/data/bloc/status_bloc/status_bloc.dart';
 import 'package:bloc_practice/data/bloc/switch_slider/bloc/switch_slider_bloc.dart';
+import 'package:bloc_practice/data/cubit/bottom_nav_screen_cubit/bottom_nav_screen_cubit.dart';
 import 'package:bloc_practice/data/cubit/counter/counter_cubit.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_api/cubit/cubit_post.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_details/cubit/post_details_cubit.dart';
@@ -25,6 +26,7 @@ import 'package:bloc_practice/data/service/internet_service/internet_service.dar
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
+import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/main_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/internect_connection_status_screen/internet_connection_status_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/post_screen_cubit/post_screen_cubit.dart';
@@ -130,11 +132,15 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => TaskStatusBloc()),
 
         BlocProvider(create: (context) => InternetStatusCubit(service: getIt<InternetService>())),
+
+        BlocProvider(
+          create: (context) => BottomNavScreenCubit(),
+        ),
       ],
       child: ToastificationWrapper(
         child: MaterialApp(
           title: 'Material App',
-          home: StatusCubitScreen(),
+          home: MainScreen(),
           //routerConfig: RoutesManager.routerConfig,
         ),
       ),
