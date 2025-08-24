@@ -12,7 +12,8 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     TextEditingController dateController = TextEditingController();
 
-    dispose() {
+    @override
+    void dispose() {
       dateController.dispose();
       super.dispose();
     }

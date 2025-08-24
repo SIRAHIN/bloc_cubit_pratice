@@ -138,10 +138,10 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: ToastificationWrapper(
-        child: MaterialApp(
+        child: MaterialApp.router(
           title: 'Material App',
-          home: MainScreen(),
-          //routerConfig: RoutesManager.routerConfig,
+          //home: MainScreen(),
+          routerConfig: RoutesManager.routerConfig,
         ),
       ),
       // ),

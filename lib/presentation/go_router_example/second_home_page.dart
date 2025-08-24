@@ -4,7 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'routes_manager.dart';
 
 class SecondHomePage extends StatefulWidget {
-  const SecondHomePage({super.key});
+  String ? extra;
+   SecondHomePage({super.key, required this.extra});
 
   @override
   State<SecondHomePage> createState() => _SecondHomePageState();
@@ -21,6 +22,7 @@ class _SecondHomePageState extends State<SecondHomePage> {
     final type = GoRouter.of(context).routeInformationProvider.value.uri;
     final queryParams = type.queryParameters;
     String colorChangeValue = queryParams['type']!;
+    
 
     if (colorChangeValue == 'typeFromButton') {
       value = 0.9;
@@ -34,10 +36,13 @@ class _SecondHomePageState extends State<SecondHomePage> {
   @override
   initState() {
 
+    print('Extra Value: ${widget.extra.runtimeType}');
+
     // Get the query parameter from the URL //
     final type = GoRouter.of(context).routeInformationProvider.value.uri;
     final queryParams = type.queryParameters;
     typeValue = queryParams['type'];
+    print('QueryParams Value: ${type.queryParameters}');
 
     // Setup a Listener for the route to act according to its typesValue //
     GoRouter.of(context).routeInformationProvider.addListener(changeColorValue);
@@ -63,8 +68,12 @@ class _SecondHomePageState extends State<SecondHomePage> {
               ElevatedButton(
                   onPressed: () async {
                     //context.go('/second-home-page');
-                    RoutesManager.routerConfig
-                        .go('/second-home-page?type=typeFromButton');
+                    // RoutesManager.routerConfig
+                    //     .go('/second-home-page?type=typeFromButton');
+
+                    context.goNamed(RoutesManager.secondHomePage,
+                        queryParameters: {'type': 'typeFromButton'});    
+                        
                   },
                   child: Text('Press Here!'))
             ],

@@ -9,17 +9,20 @@ class RoutesManager {
     routes: [
       GoRoute(
         path: '/',
-        name: 'home',
+        name: homePage,
         builder: (context, state) => HomePage(),
         routes: [
           GoRoute(
               path: 'second-home-page',
-              name: 'secondHomePage',
-              builder: (context, state) => SecondHomePage(),
+              name: secondHomePage,
+              builder: (context, state) {
+                final extraValue = state.extra as String;
+                return SecondHomePage(extra: extraValue,);
+              },
               routes: [
                 GoRoute(
                   path: 'second-home-page-type-2',
-                  name: 'secondHomePageType2',
+                  name: secondHomePageType2,
                   builder: (context, state) => SecondPageType2(),
                 ),
               ]),
@@ -27,9 +30,14 @@ class RoutesManager {
       ),
       GoRoute(
         path: '/detailsPage',
-        name: 'detailsPage',
+        name: detailsPage,
         builder: (context, state) => DetailsPage(productId: state.extra as int),
       )
     ],
   );
+
+  static String homePage = 'homePage';
+  static String secondHomePage = 'second-home-page';
+  static String secondHomePageType2 = 'second-home-page-type-2';
+  static String detailsPage = 'detailsPage';
 }
