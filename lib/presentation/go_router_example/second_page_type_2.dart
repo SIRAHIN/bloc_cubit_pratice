@@ -1,3 +1,6 @@
+import 'package:bloc_practice/dart_practice/depencency_injection/api_service.dart';
+import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
+import 'package:bloc_practice/dart_practice/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,6 +36,7 @@ class _SecondPageType2State extends State<SecondPageType2> {
             ElevatedButton(
                 onPressed: () {
                   context.go('/detailsPage', extra: 30);
+                  getIt<ApiServiceTest>().fetchData();
                 },
                 child: Text('Press Here!'))
           ],

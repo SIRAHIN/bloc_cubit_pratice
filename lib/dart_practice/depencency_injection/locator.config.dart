@@ -18,6 +18,7 @@ import '../../data/data_provider/post_details_provider.dart' as _i438;
 import '../../data/repository/post_details_repository.dart' as _i61;
 import '../../data/repository/post_repository.dart' as _i180;
 import '../../data/service/internet_service/internet_service.dart' as _i872;
+import '../services/api_service.dart' as _i137;
 import 'api_service.dart' as _i738;
 import 'test_service.dart' as _i48;
 import 'user_repository.dart' as _i537;
@@ -44,5 +45,7 @@ _i174.GetIt $initGetIt(
       () => _i537.UserRepository(gh<_i738.ApiService>()));
   gh.factory<_i5.PostDetailsCubit>(
       () => _i5.PostDetailsCubit(gh<_i61.PostDetailsRepository>()));
+  gh.lazySingleton<_i137.ApiServiceTest>(
+      () => _i137.ApiServiceTestImp(gh<_i180.PostRepository>()));
   return getIt;
 }
