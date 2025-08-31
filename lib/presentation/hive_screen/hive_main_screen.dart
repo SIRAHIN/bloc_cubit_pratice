@@ -70,6 +70,7 @@ class _HiveMainScreenState extends State<HiveMainScreen> {
                         shrinkWrap: true,
                         itemCount: box.values.length,
                         itemBuilder: (context, index) {
+                          // get sinle todo item //
                           final todo = box.getAt(index);
                           return ListTile(
                             title: Text(todo?.title ?? 'No Title Found'),
@@ -79,7 +80,14 @@ class _HiveMainScreenState extends State<HiveMainScreen> {
                                 Checkbox(
                                   value: todo?.isCompleted ?? false,
                                   onChanged: (value) {
-                                    // Update todo completion status
+                                    // Update todo completion status //
+                                    // if (todo != null) {
+                                    //   final updatedTodoWithCopyWith =
+                                    //       todo.copyWith(
+                                    //           isCompleted: value ?? false);
+                                    //   box.putAt(index, updatedTodoWithCopyWith);
+                                    // }
+
                                     if (todo != null) {
                                       final updatedTodo = TodoModel(
                                           title: todo.title,
@@ -140,13 +148,19 @@ class _HiveMainScreenState extends State<HiveMainScreen> {
           ),
           TextButton(
             onPressed: () {
+              // update with copyWith \\
+              //  final todo = HiveBoxConst.instance.todoBox.getAt(index);
+              //   if (todo != null) {
+              //     final updatedTodo = todo.copyWith(title: updateController.text);
+              //     HiveBoxConst.instance.todoBox.putAt(index, updatedTodo);
+              //   }
+
               final updateTodo = TodoModel(
                 title: updateController.text,
                 isCompleted: isCompleted,
               );
               HiveBoxConst.instance.todoBox.putAt(index, updateTodo);
               Navigator.pop(context);
-
             },
             child: Text('Update'),
           ),
