@@ -35,18 +35,25 @@ import 'package:bloc_practice/presentation/cubit_screens/switch_slider_cubit_scr
 import 'package:bloc_practice/presentation/cubit_screens/todo_screen/todo_list_screen.dart';
 import 'package:bloc_practice/presentation/go_router_example/home_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/routes_manager.dart';
+import 'package:bloc_practice/presentation/hive_screen/const/hive_box_const.dart';
+import 'package:bloc_practice/presentation/hive_screen/hive_main_screen.dart';
+import 'package:bloc_practice/presentation/hive_screen/hive_model/todo_model.dart';
 import 'package:bloc_practice/presentation/ui_practice/custom_scroll.dart';
 import 'package:bloc_practice/presentation/ui_practice/scrolling_forward_reverse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:toastification/toastification.dart';
 
 //void main() => runApp(const MyApp());
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   getIt<InternetService>().initializeInternetService(isFirstTime: true);
+  await Hive.initFlutter();
+  Hive.registerAdapter(TodoModelAdapter());
+  HiveBoxConst.instance.todoBox = await Hive.openBox<TodoModel>(HiveBoxConst.todoBoxName);
   runApp(const MyApp());
 }
 
@@ -138,10 +145,10 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: ToastificationWrapper(
-        child: MaterialApp.router(
+        child: MaterialApp(
           title: 'Material App',
-          //home: MainScreen(),
-          routerConfig: RoutesManager.routerConfig,
+          home: HiveMainScreen(),
+          //routerConfig: RoutesManager.routerConfig,
         ),
       ),
       // ),
