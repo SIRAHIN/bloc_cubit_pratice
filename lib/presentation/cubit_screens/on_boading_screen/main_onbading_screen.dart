@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MainOnbadingScreen extends StatelessWidget {
-   MainOnbadingScreen({super.key});
+  MainOnbadingScreen({super.key});
 
   PageController pageController = PageController();
 
@@ -40,7 +40,13 @@ class MainOnbadingScreen extends StatelessWidget {
                       AnimatedSmoothIndicator(
                         activeIndex: state.pageIndex,
                         count: 3,
-                        effect: WormEffect(),
+                        effect: WormEffect(
+                          activeDotColor: state.pageIndex == 0
+                              ? Colors.blue
+                              : state.pageIndex == 1
+                                  ? Colors.green
+                                  : Colors.purple,
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -48,7 +54,11 @@ class MainOnbadingScreen extends StatelessWidget {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           minimumSize: Size(double.infinity, 50),
-                          backgroundColor: Colors.blue,
+                          backgroundColor: state.pageIndex == 0
+                              ? Colors.blue
+                              : state.pageIndex == 1
+                                  ? Colors.green
+                                  : Colors.purple,
                         ),
                         onPressed: () {
                           if (state.pageIndex < 2) {
