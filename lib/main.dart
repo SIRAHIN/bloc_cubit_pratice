@@ -3,6 +3,7 @@ import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_bloc.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_bloc.dart';
 import 'package:bloc_practice/data/bloc/counter/counter_bloc.dart';
+import 'package:bloc_practice/data/bloc/grocery_bloc/grocery_bloc.dart';
 import 'package:bloc_practice/data/bloc/loader/loader_bloc.dart';
 import 'package:bloc_practice/data/bloc/login/login_bloc.dart';
 import 'package:bloc_practice/data/bloc/status_bloc/status_bloc.dart';
@@ -24,6 +25,7 @@ import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
 import 'package:bloc_practice/data/repository/post_details_repository.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:bloc_practice/data/service/internet_service/internet_service.dart';
+import 'package:bloc_practice/presentation/bloc_screens/grocery_bloc_screen/grocery_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
@@ -55,7 +57,8 @@ void main() async {
   getIt<InternetService>().initializeInternetService(isFirstTime: true);
   await Hive.initFlutter();
   Hive.registerAdapter(TodoModelAdapter());
-  HiveBoxConst.instance.todoBox = await Hive.openBox<TodoModel>(HiveBoxConst.todoBoxName);
+  HiveBoxConst.instance.todoBox =
+      await Hive.openBox<TodoModel>(HiveBoxConst.todoBoxName);
   runApp(const MyApp());
 }
 
@@ -81,7 +84,6 @@ class MyApp extends StatelessWidget {
         //   child:
         MultiBlocProvider(
       providers: [
-
         // == Respository Provier == //
         // RepositoryProvider(
         //   create: (context) => PostRepository(),
@@ -119,7 +121,7 @@ class MyApp extends StatelessWidget {
         // Cubit Api Calling Provider //
         BlocProvider(
             create: (context) => CubitPost(
-                  // getIt<PostRepository>()
+                // getIt<PostRepository>()
                 )),
 
         BlocProvider(
@@ -140,7 +142,9 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(create: (context) => TaskStatusBloc()),
 
-        BlocProvider(create: (context) => InternetStatusCubit(service: getIt<InternetService>())),
+        BlocProvider(
+            create: (context) =>
+                InternetStatusCubit(service: getIt<InternetService>())),
 
         BlocProvider(
           create: (context) => BottomNavScreenCubit(),
@@ -149,11 +153,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => OnBoadingCubit(),
         ),
+
+        BlocProvider(create: (context) => GroceryBloc()),
       ],
       child: ToastificationWrapper(
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Material App',
-          home: MainOnbadingScreen(),
+          home: GroceryBlocScreen(),
           //routerConfig: RoutesManager.routerConfig,
         ),
       ),
