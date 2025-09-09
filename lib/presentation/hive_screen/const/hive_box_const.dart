@@ -1,4 +1,5 @@
 
+import 'package:bloc_practice/data/models/grocery_model/grocery_model.dart';
 import 'package:bloc_practice/presentation/hive_screen/hive_model/todo_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -16,5 +17,10 @@ class HiveBoxConst {
   static const String todoBoxName = 'todo_box';
 
   late Box<TodoModel>todoBox;
+
+    // 🔹 Hive box constants
+  static const String groceryBoxName = 'grocery_box';
+
+  late Box<GroceryItem>groceryBox;
 
 }

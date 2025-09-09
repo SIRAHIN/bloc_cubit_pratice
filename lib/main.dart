@@ -22,6 +22,7 @@ import 'package:bloc_practice/data/cubit/switch_slider/cubit/switch_slider_cubit
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit.dart';
 import 'package:bloc_practice/data/data_provider/post_data_provider.dart';
 import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
+import 'package:bloc_practice/data/models/grocery_model/grocery_model.dart';
 import 'package:bloc_practice/data/repository/post_details_repository.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:bloc_practice/data/service/internet_service/internet_service.dart';
@@ -57,8 +58,11 @@ void main() async {
   getIt<InternetService>().initializeInternetService(isFirstTime: true);
   await Hive.initFlutter();
   Hive.registerAdapter(TodoModelAdapter());
+  Hive.registerAdapter(GroceryItemAdapter());
   HiveBoxConst.instance.todoBox =
       await Hive.openBox<TodoModel>(HiveBoxConst.todoBoxName);
+  HiveBoxConst.instance.groceryBox =
+      await Hive.openBox(HiveBoxConst.groceryBoxName);    
   runApp(const MyApp());
 }
 

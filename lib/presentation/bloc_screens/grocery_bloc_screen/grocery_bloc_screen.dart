@@ -70,11 +70,11 @@ class _GroceryBlocScreenState extends State<GroceryBlocScreen> {
                     if (state.itemswithList.contains(item)) {
                       context
                           .read<GroceryBloc>()
-                          .add(RemoveGroceryItemEvent([item]));
+                          .add(RemoveGroceryItemEvent(item));
                     } else {
                       context
                           .read<GroceryBloc>()
-                          .add(AddGroceryItemEvent([item]));
+                          .add(AddGroceryItemEvent(item));
                     }
                   },
                 ),

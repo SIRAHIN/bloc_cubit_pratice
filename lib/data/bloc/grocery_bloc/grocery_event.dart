@@ -5,12 +5,12 @@ class GroceryEvent {}
 class LoadGroceryEvent extends GroceryEvent {}
 
 class AddGroceryItemEvent extends GroceryEvent {
-  final List<GroceryItem> itemWishList;
+  final GroceryItem itemWishItem;
 
-  AddGroceryItemEvent(this.itemWishList);
+  AddGroceryItemEvent(this.itemWishItem);
 }
 class RemoveGroceryItemEvent extends GroceryEvent {
-  final List<GroceryItem> itemWishList;
+  final GroceryItem itemWishItem;
 
-  RemoveGroceryItemEvent(this.itemWishList);
+  RemoveGroceryItemEvent(this.itemWishItem);
 }

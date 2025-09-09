@@ -1,37 +1,20 @@
-class GroceryItem {
-  final int id;
-  final String name;
-  final int quantity;
-  final String unit;
-  final double price;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive/hive.dart';
 
-  GroceryItem({
-    required this.id,
-    required this.name,
-    required this.quantity,
-    required this.unit,
-    required this.price,
-  });
+part 'grocery_model.freezed.dart';
+part 'grocery_model.g.dart';
 
-  // From JSON
-  factory GroceryItem.fromJson(Map<String, dynamic> json) {
-    return GroceryItem(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      quantity: json['quantity'] as int,
-      unit: json['unit'] as String,
-      price: (json['price'] as num).toDouble(),
-    );
-  }
+@freezed
+@HiveType(typeId: 1, adapterName: 'GroceryItemAdapter') // ✅ unique typeId
+class GroceryItem with _$GroceryItem {
+  const factory GroceryItem({
+    @HiveField(0) required int id,
+    @HiveField(1) required String name,
+    @HiveField(2) required int quantity,
+    @HiveField(3) required String unit,
+    @HiveField(4) required double price,
+  }) = _GroceryItem;
 
-  // To JSON
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'quantity': quantity,
-      'unit': unit,
-      'price': price,
-    };
-  }
+  factory GroceryItem.fromJson(Map<String, dynamic> json) =>
+      _$GroceryItemFromJson(json);
 }
