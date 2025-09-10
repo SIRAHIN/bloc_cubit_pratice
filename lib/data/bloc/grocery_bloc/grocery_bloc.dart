@@ -9,6 +9,21 @@ class GroceryBloc extends Bloc<GroceryEvent, GroceryState> {
   GroceryBloc() : super(GroceryState()) {
     List<GroceryItem> groceryList = [];
     List<GroceryItem> groceryWishtList = [];
+    double totalPrice = 0.0;
+
+    // Function to calculate the total price of items in the wishlist //
+    void totalPriceCalculate() {
+      totalPrice = 0.0; // Reset always
+      for (var item in groceryWishtList) {
+        totalPrice += item.price;
+      }
+
+      // Alternative using fold method //
+      // totalPrice = groceryWishtList.fold(
+      //   0.0, // initial value
+      //   (sum, item) => sum + item.price,
+      // );
+    }
 
     on<LoadGroceryEvent>((event, emit) {
       // Parse the grocery data from JSON and convert it to a list of GroceryItem objects //
@@ -22,10 +37,16 @@ class GroceryBloc extends Bloc<GroceryEvent, GroceryState> {
       List<GroceryItem> existingItems =
           HiveBoxConst.instance.groceryBox.values.toList().cast<GroceryItem>();
       // Initialize the grocery list and wishlist //
-      groceryWishtList = existingItems;
+      groceryWishtList.addAll(existingItems);
+
+      // Calculate the total price of items in the wishlist //
+      totalPriceCalculate();
 
       // Emit the initial state with both lists populated //
-      emit(GroceryState(items: groceryList, itemswithList: groceryWishtList));
+      emit(GroceryState(
+          items: groceryList,
+          itemswithList: groceryWishtList,
+          totoalPrice: totalPrice));
     });
 
     // =========== Add Item to the Wishlist =========== //
@@ -40,8 +61,15 @@ class GroceryBloc extends Bloc<GroceryEvent, GroceryState> {
       // Retrieve the updated list from the Hive box //
       groceryWishtList =
           HiveBoxConst.instance.groceryBox.values.toList().cast<GroceryItem>();
+
+      // Reset total price before recalculation //
+      totalPriceCalculate();
+
       // Emit the updated state with the new list //
-      emit(GroceryState(items: groceryList, itemswithList: groceryWishtList));
+      emit(GroceryState(
+          items: groceryList,
+          itemswithList: groceryWishtList,
+          totoalPrice: totalPrice));
     });
 
     // =========== Remove Item from the Wishlist =========== //
@@ -55,8 +83,15 @@ class GroceryBloc extends Bloc<GroceryEvent, GroceryState> {
       // Retrieve the updated list from the Hive box //
       groceryWishtList =
           HiveBoxConst.instance.groceryBox.values.toList().cast<GroceryItem>();
+
+      // Reset total price before recalculation //
+      totalPriceCalculate();
+
       // Emit the updated state with the new list //
-      emit(GroceryState(items: groceryList, itemswithList: groceryWishtList));
+      emit(GroceryState(
+          items: groceryList,
+          itemswithList: groceryWishtList,
+          totoalPrice: totalPrice));
     });
   }
 }

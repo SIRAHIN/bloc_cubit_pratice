@@ -57,29 +57,49 @@ class _GroceryBlocScreenState extends State<GroceryBlocScreen> {
       ),
       body: BlocBuilder<GroceryBloc, GroceryState>(
         builder: (context, state) {
-          return ListView.builder(
-            itemCount: state.items.length,
-            itemBuilder: (context, index) {
-              var item = state.items[index];
-              return ListTile(
-                title: Text(item.name),
-                subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
-                trailing: IconButton(
-                  icon: Icon(Icons.add_shopping_cart),
-                  onPressed: () {
-                    if (state.itemswithList.contains(item)) {
-                      context
-                          .read<GroceryBloc>()
-                          .add(RemoveGroceryItemEvent(item));
-                    } else {
-                      context
-                          .read<GroceryBloc>()
-                          .add(AddGroceryItemEvent(item));
-                    }
-                  },
+          return Column(
+            children: [
+              SizedBox(height: 10),
+              if (state.itemswithList.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: Colors.teal,
+                    padding: EdgeInsets.all(10),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Grocery total :${state.totoalPrice}',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                  ),
                 ),
-              );
-            },
+              SizedBox(height: 10),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: state.items.length,
+                itemBuilder: (context, index) {
+                  var item = state.items[index];
+                  return ListTile(
+                    title: Text(item.name),
+                    subtitle: Text('\$${item.price.toStringAsFixed(2)}'),
+                    trailing: IconButton(
+                      icon: Icon(Icons.add_shopping_cart),
+                      onPressed: () {
+                        if (state.itemswithList.contains(item)) {
+                          context
+                              .read<GroceryBloc>()
+                              .add(RemoveGroceryItemEvent(item));
+                        } else {
+                          context
+                              .read<GroceryBloc>()
+                              .add(AddGroceryItemEvent(item));
+                        }
+                      },
+                    ),
+                  );
+                },
+              )
+            ],
           );
         },
       ),

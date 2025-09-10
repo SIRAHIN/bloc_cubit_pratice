@@ -62,7 +62,7 @@ void main() async {
   HiveBoxConst.instance.todoBox =
       await Hive.openBox<TodoModel>(HiveBoxConst.todoBoxName);
   HiveBoxConst.instance.groceryBox =
-      await Hive.openBox(HiveBoxConst.groceryBoxName);    
+      await Hive.openBox<GroceryItem>(HiveBoxConst.groceryBoxName);    
   runApp(const MyApp());
 }
 

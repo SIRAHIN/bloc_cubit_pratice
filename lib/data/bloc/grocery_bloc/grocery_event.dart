@@ -14,3 +14,8 @@ class RemoveGroceryItemEvent extends GroceryEvent {
 
   RemoveGroceryItemEvent(this.itemWishItem);
 }
+
+class getTotalPrice extends GroceryEvent {
+  double totalPrice;
+  getTotalPrice({required this.totalPrice});
+}
