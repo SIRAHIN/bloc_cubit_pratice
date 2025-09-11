@@ -6,17 +6,17 @@ part of 'grocery_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class GroceryItemAdapter extends TypeAdapter<_$GroceryItemImpl> {
+class GroceryItemAdapter extends TypeAdapter<GroceryItem> {
   @override
   final int typeId = 1;
 
   @override
-  _$GroceryItemImpl read(BinaryReader reader) {
+  GroceryItem read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$GroceryItemImpl(
+    return GroceryItem(
       id: fields[0] as int,
       name: fields[1] as String,
       quantity: fields[2] as int,
@@ -26,7 +26,7 @@ class GroceryItemAdapter extends TypeAdapter<_$GroceryItemImpl> {
   }
 
   @override
-  void write(BinaryWriter writer, _$GroceryItemImpl obj) {
+  void write(BinaryWriter writer, GroceryItem obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)

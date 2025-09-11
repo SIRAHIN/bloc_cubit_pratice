@@ -17,6 +17,7 @@ import 'package:bloc_practice/data/cubit/internet_status/internet_status_cubit.d
 import 'package:bloc_practice/data/cubit/loader/loading_cubit.dart';
 import 'package:bloc_practice/data/cubit/login/login_cubit.dart';
 import 'package:bloc_practice/data/cubit/on_boading_cubit/on_boading_cubit.dart';
+import 'package:bloc_practice/data/cubit/pagination_cubit/pagination_cubit.dart';
 import 'package:bloc_practice/data/cubit/status_cubit/status_cubit.dart';
 import 'package:bloc_practice/data/cubit/switch_slider/cubit/switch_slider_cubit.dart';
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit.dart';
@@ -34,6 +35,7 @@ import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/main_
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/internect_connection_status_screen/internet_connection_status_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/on_boading_screen/main_onbading_screen.dart';
+import 'package:bloc_practice/presentation/cubit_screens/pagination_screen/pagination_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/post_screen_cubit/post_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/status_cubit_screen/status_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/switch_slider_cubit_screen/switch_slider_cubit_scree.dart';
@@ -159,12 +161,14 @@ class MyApp extends StatelessWidget {
         ),
 
         BlocProvider(create: (context) => GroceryBloc()),
+        
+        BlocProvider(create: (context) => getIt<PaginationCubit>())
       ],
       child: ToastificationWrapper(
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Material App',
-          home: GroceryBlocScreen(),
+          home: PaginationScreen(),
           //routerConfig: RoutesManager.routerConfig,
         ),
       ),

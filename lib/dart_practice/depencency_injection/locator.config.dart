@@ -13,8 +13,10 @@ import 'package:injectable/injectable.dart' as _i526;
 
 import '../../data/cubit/cubit_post_details/cubit/post_details_cubit.dart'
     as _i5;
+import '../../data/cubit/pagination_cubit/pagination_cubit.dart' as _i709;
 import '../../data/data_provider/post_data_provider.dart' as _i588;
 import '../../data/data_provider/post_details_provider.dart' as _i438;
+import '../../data/repository/pagination_repository.dart' as _i459;
 import '../../data/repository/post_details_repository.dart' as _i61;
 import '../../data/repository/post_repository.dart' as _i180;
 import '../../data/service/internet_service/internet_service.dart' as _i872;
@@ -39,8 +41,10 @@ _i174.GetIt $initGetIt(
   gh.factory<_i61.PostDetailsRepository>(() => _i61.PostDetailsRepository());
   gh.factory<_i588.PostDataProvider>(() => _i588.PostDataProvider());
   gh.factory<_i438.PostDetailsProvider>(() => _i438.PostDetailsProvider());
+  gh.factory<_i709.PaginationCubit>(() => _i709.PaginationCubit());
   gh.singleton<_i48.TestService>(() => _i48.TestService());
   gh.singleton<_i872.InternetService>(() => _i872.InternetService());
+  gh.singleton<_i459.PaginationRepository>(() => _i459.PaginationRepository());
   gh.factory<_i537.UserRepository>(
       () => _i537.UserRepository(gh<_i738.ApiService>()));
   gh.factory<_i5.PostDetailsCubit>(

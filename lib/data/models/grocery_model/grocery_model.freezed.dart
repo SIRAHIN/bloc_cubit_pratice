@@ -163,7 +163,6 @@ class __$$GroceryItemImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-@HiveType(typeId: 1, adapterName: 'GroceryItemAdapter')
 class _$GroceryItemImpl implements _GroceryItem {
   const _$GroceryItemImpl(
       {@HiveField(0) required this.id,
