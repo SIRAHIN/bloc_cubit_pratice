@@ -25,6 +25,7 @@ class _PaginationScreenState extends State<PaginationScreen> {
     _scrollController.addListener(() async {
       if (_scrollController.position.maxScrollExtent ==
           _scrollController.offset) {
+            print("===== Scroll Reached to Bottom =====");
         await BlocProvider.of<PaginationCubit>(context).onScrollingEvent();
       }
     });
@@ -50,26 +51,49 @@ class _PaginationScreenState extends State<PaginationScreen> {
               controller: _scrollController,
               itemCount: state.items.length + 1,
               itemBuilder: (_, index) {
-                final prodcutItem = state.items[index];
                 if (index < state.items.length) {
-                  return Card(
-                    child: Column(
-                      children: [
-                        Text(prodcutItem.name),
-                        SizedBox(
-                          height: 5,
+                
+                // Get Product From Valid Range of Index //
+                final prodcutItem = state.items[index];
+
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      elevation: 3,
+                      color: Colors.teal[100],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(prodcutItem.name),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              prodcutItem.createdAt.toString(),
+                              maxLines: 3,
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                          ],
                         ),
-                        Text(
-                          prodcutItem.details.toString(),
-                          maxLines: 3,
-                        )
-                      ],
+                      ),
                     ),
                   );
                 } else {
                   return state.hasReachedMax == true
-                      ? Text("No Data Left")
-                      : CircularProgressIndicator();
+                      ? Container(
+                        height: 100,
+                        alignment: Alignment.center,
+                        color: Colors.red[100],
+                        child: Text("No Data Left"))
+                      : Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: CircularProgressIndicator(),
+                          ),
+                      );
                 }
               },
             );

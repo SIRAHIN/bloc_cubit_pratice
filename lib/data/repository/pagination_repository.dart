@@ -4,16 +4,14 @@ import 'package:bloc_practice/data/models/product_model/product_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-@singleton
+ @lazySingleton
  class PaginationRepository {
-
-
   Future<List<Product>> getProductList({required int offsetNumber}) async {
       Dio dio = Dio();
     try {
       print(" ================ Come Here ===================");
       final response = await dio.get(
-        ApiUrl.paginationUrl(offsetNumber: 1, limit: 10),
+        ApiUrl.paginationUrl(offsetNumber: offsetNumber, limit: 10),
       );
       print(response.data);
       final parseData = ProductList.fromJson(response.data);

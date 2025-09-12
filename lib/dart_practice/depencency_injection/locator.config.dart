@@ -41,14 +41,16 @@ _i174.GetIt $initGetIt(
   gh.factory<_i61.PostDetailsRepository>(() => _i61.PostDetailsRepository());
   gh.factory<_i588.PostDataProvider>(() => _i588.PostDataProvider());
   gh.factory<_i438.PostDetailsProvider>(() => _i438.PostDetailsProvider());
-  gh.factory<_i709.PaginationCubit>(() => _i709.PaginationCubit());
   gh.singleton<_i48.TestService>(() => _i48.TestService());
   gh.singleton<_i872.InternetService>(() => _i872.InternetService());
-  gh.singleton<_i459.PaginationRepository>(() => _i459.PaginationRepository());
+  gh.lazySingleton<_i459.PaginationRepository>(
+      () => _i459.PaginationRepository());
   gh.factory<_i537.UserRepository>(
       () => _i537.UserRepository(gh<_i738.ApiService>()));
   gh.factory<_i5.PostDetailsCubit>(
       () => _i5.PostDetailsCubit(gh<_i61.PostDetailsRepository>()));
+  gh.factory<_i709.PaginationCubit>(
+      () => _i709.PaginationCubit(gh<_i459.PaginationRepository>()));
   gh.lazySingleton<_i137.ApiServiceTest>(
       () => _i137.ApiServiceTestImp(gh<_i180.PostRepository>()));
   return getIt;
