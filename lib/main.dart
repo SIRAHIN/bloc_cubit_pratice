@@ -50,6 +50,7 @@ import 'package:bloc_practice/presentation/ui_practice/scrolling_forward_reverse
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:toastification/toastification.dart';
 
 //void main() => runApp(const MyApp());
@@ -57,7 +58,16 @@ import 'package:toastification/toastification.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  getIt<InternetService>().initializeInternetService(isFirstTime: true);
+
+  // Enable verbose logging for debugging (remove in production)
+  OneSignal.Debug.setLogLevel(OSLogLevel.verbose);
+  // Initialize with your OneSignal App ID
+  OneSignal.initialize("e90c2b87-ef06-43f6-bfef-417b839f5aa7");
+  // Use this method to prompt for push notifications.
+  // We recommend removing this method after testing and instead use In-App Messages to prompt for notification permission.
+  OneSignal.Notifications.requestPermission(true);
+
+  await getIt<InternetService>().initializeInternetService(isFirstTime: true);
   await Hive.initFlutter();
   Hive.registerAdapter(TodoModelAdapter());
   Hive.registerAdapter(GroceryItemAdapter());
