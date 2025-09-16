@@ -178,7 +178,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Material App',
-          home: PaginationScreen(),
+          home: MainScreen(),
           //routerConfig: RoutesManager.routerConfig,
         ),
       ),
