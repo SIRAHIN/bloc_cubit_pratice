@@ -31,6 +31,7 @@ import 'package:bloc_practice/presentation/bloc_screens/grocery_bloc_screen/groc
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
+import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/cubit/first_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/main_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/internect_connection_status_screen/internet_connection_status_screen.dart';
@@ -172,7 +173,9 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(create: (context) => GroceryBloc()),
         
-        BlocProvider(create: (context) => getIt<PaginationCubit>())
+        BlocProvider(create: (context) => getIt<PaginationCubit>()),
+
+        BlocProvider(create: (context) => CheckinOutCubit())
       ],
       child: ToastificationWrapper(
         child: MaterialApp(

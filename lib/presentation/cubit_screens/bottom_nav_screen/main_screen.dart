@@ -1,6 +1,6 @@
 import 'package:bloc_practice/data/cubit/bottom_nav_screen_cubit/bottom_nav_screen_cubit.dart';
 import 'package:bloc_practice/data/cubit/bottom_nav_screen_cubit/bottom_nav_screen_state.dart';
-import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen.dart';
+import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/first_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/third_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
