@@ -45,6 +45,7 @@ import 'package:bloc_practice/presentation/go_router_example/home_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/routes_manager.dart';
 import 'package:bloc_practice/presentation/hive_screen/const/hive_box_const.dart';
 import 'package:bloc_practice/presentation/hive_screen/hive_main_screen.dart';
+import 'package:bloc_practice/presentation/hive_screen/hive_model/attendance_model/attendance_model.dart';
 import 'package:bloc_practice/presentation/hive_screen/hive_model/todo_model.dart';
 import 'package:bloc_practice/presentation/ui_practice/custom_scroll.dart';
 import 'package:bloc_practice/presentation/ui_practice/scrolling_forward_reverse.dart';
@@ -72,10 +73,13 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(TodoModelAdapter());
   Hive.registerAdapter(GroceryItemAdapter());
+  Hive.registerAdapter(AttendanceModelAdapter());
   HiveBoxConst.instance.todoBox =
       await Hive.openBox<TodoModel>(HiveBoxConst.todoBoxName);
   HiveBoxConst.instance.groceryBox =
       await Hive.openBox<GroceryItem>(HiveBoxConst.groceryBoxName);    
+  HiveBoxConst.instance.checkStateBox =
+      await Hive.openBox<AttendanceModel>(HiveBoxConst.checkStateBoxname);    
   runApp(const MyApp());
 }
 

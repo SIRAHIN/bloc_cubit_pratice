@@ -1,5 +1,6 @@
 
 import 'package:bloc_practice/data/models/grocery_model/grocery_model.dart';
+import 'package:bloc_practice/presentation/hive_screen/hive_model/attendance_model/attendance_model.dart';
 import 'package:bloc_practice/presentation/hive_screen/hive_model/todo_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -22,5 +23,10 @@ class HiveBoxConst {
   static const String groceryBoxName = 'grocery_box';
 
   late Box<GroceryItem>groceryBox;
+
+  // 🔹 hive  box for check in out state
+  static const String checkStateBoxname = "check_state_box";
+  
+  late Box<AttendanceModel> checkStateBox;
 
 }

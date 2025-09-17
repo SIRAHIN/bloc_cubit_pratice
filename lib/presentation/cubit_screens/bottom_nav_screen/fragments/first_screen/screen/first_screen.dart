@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/cubit/first_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/cubit/first_screen_state.dart';
+import 'package:bloc_practice/presentation/hive_screen/const/hive_box_const.dart';
+import 'package:bloc_practice/presentation/hive_screen/hive_model/attendance_model/attendance_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 
 class FirstScreen extends StatefulWidget {
@@ -18,12 +21,17 @@ class _FirstScreenState extends State<FirstScreen> {
   final ValueNotifier<String> _dateString = ValueNotifier("");
   late Timer _timer;
 
+  final ValueNotifier<String?> _stroedCheckin = ValueNotifier(null);
+  final ValueNotifier<String?> _storedCheckout = ValueNotifier(null);
+  final ValueNotifier<bool?> _storedisCheckin = ValueNotifier(null);
+
   @override
   void initState() {
     print("Init called from home screen");
     super.initState();
 
     _updateTime(); // initialize with current time
+    //getCacheAttendenceData();
 
     // Update Time Every 1 Sec //
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -37,6 +45,16 @@ class _FirstScreenState extends State<FirstScreen> {
     super.dispose();
     _timer.cancel();
   }
+
+  // void getCacheAttendenceData()  {
+  //   AttendanceModel cacheData =
+  //       HiveBoxConst.instance.checkStateBox.values.toList().first;
+  //   if (cacheData != null) {
+  //     _stroedCheckin.value = cacheData.checkIn;
+  //     _storedCheckout.value = cacheData.checkOut;
+  //     _storedisCheckin.value = cacheData.isCheckin;
+  //   }
+  // }
 
   // Time Date Formatter Function //
   void _updateTime() {
@@ -115,8 +133,8 @@ class _FirstScreenState extends State<FirstScreen> {
                         boxShadow: [
                           BoxShadow(
                             color: state.status == checkStatus.checkin
-                                ?  Colors.red : Colors.green,
-                              
+                                ? Colors.red
+                                : Colors.green,
                             blurRadius: 5,
                           )
                         ]),
@@ -296,7 +314,7 @@ class _FirstScreenState extends State<FirstScreen> {
                                     SizedBox(
                                       height: 4,
                                     ),
-                                     Text(state.checkInTime ?? "--|--"),
+                                    Text(state.checkInTime ?? "--|--"),
                                     SizedBox(
                                       height: 4,
                                     ),
@@ -328,7 +346,9 @@ class _FirstScreenState extends State<FirstScreen> {
                                 SizedBox(
                                   height: 4,
                                 ),
-                                Text(state.checkOutTime ?? "--|--"),
+                                Text(state.status != checkStatus.checkin
+                                    ? state.checkOutTime ?? "--|--"
+                                    : "--|--"),
                                 SizedBox(
                                   height: 4,
                                 ),
