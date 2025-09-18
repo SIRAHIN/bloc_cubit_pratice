@@ -40,15 +40,14 @@ class CheckinOutCubit extends Cubit<CheckInOutState> {
   void checkOut(String time) async {
     final box = HiveBoxConst.instance.checkStateBox;
     if (box.isNotEmpty) {
-      final AttendanceModel? getAttendenceData = box.getAt(0);
-
+      final getCheckinTime = box.getAt(0);
+      if(getCheckinTime == null) return;
       await box.putAt(
           0,
           AttendanceModel(
-              checkIn: getAttendenceData!.checkIn,
+              checkIn: getCheckinTime.checkIn,
               checkOut: time,
               isCheckin: false));
-
       emit(state.copyWith(
         status: checkStatus.checkout,
         checkOutTime: time,
