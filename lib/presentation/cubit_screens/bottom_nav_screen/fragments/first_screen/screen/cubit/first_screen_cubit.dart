@@ -24,10 +24,13 @@ class CheckinOutCubit extends Cubit<CheckInOutState> {
 
   void checkIn(String time) async {
     final box = HiveBoxConst.instance.checkStateBox;
+
     if (box.isNotEmpty) {
       await box.clear();
     }
-    final model = AttendanceModel(checkIn: time, isCheckin: true);
+    final model =
+        AttendanceModel(checkIn: time, isCheckin: true, checkOut: null);
+
     await box.add(model);
 
     emit(state.copyWith(
@@ -41,13 +44,13 @@ class CheckinOutCubit extends Cubit<CheckInOutState> {
     final box = HiveBoxConst.instance.checkStateBox;
     if (box.isNotEmpty) {
       final getCheckinTime = box.getAt(0);
-      if(getCheckinTime == null) return;
-      await box.putAt(
-          0,
-          AttendanceModel(
-              checkIn: getCheckinTime.checkIn,
-              checkOut: time,
-              isCheckin: false));
+
+      if (getCheckinTime == null) return;
+
+      final model = AttendanceModel(
+          checkIn: getCheckinTime.checkIn, checkOut: time, isCheckin: false);
+
+      await box.putAt(0, model);
       emit(state.copyWith(
         status: checkStatus.checkout,
         checkOutTime: time,
