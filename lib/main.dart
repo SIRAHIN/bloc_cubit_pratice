@@ -12,6 +12,7 @@ import 'package:bloc_practice/data/cubit/bottom_nav_screen_cubit/bottom_nav_scre
 import 'package:bloc_practice/data/cubit/counter/counter_cubit.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_api/cubit/cubit_post.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_details/cubit/post_details_cubit.dart';
+import 'package:bloc_practice/data/cubit/filter_cubit/filter_cubit.dart';
 import 'package:bloc_practice/data/cubit/image_picker_cubit/cubit/image_picker_cubit.dart';
 import 'package:bloc_practice/data/cubit/internet_status/internet_status_cubit.dart';
 import 'package:bloc_practice/data/cubit/loader/loading_cubit.dart';
@@ -33,6 +34,7 @@ import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/statu
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/cubit/first_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/main_screen.dart';
+import 'package:bloc_practice/presentation/cubit_screens/filter_screen_cubit/filter_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/internect_connection_status_screen/internet_connection_status_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/on_boading_screen/main_onbading_screen.dart';
@@ -179,13 +181,15 @@ class MyApp extends StatelessWidget {
         
         BlocProvider(create: (context) => getIt<PaginationCubit>()),
 
-        BlocProvider(create: (context) => CheckinOutCubit())
+        BlocProvider(create: (context) => CheckinOutCubit()),
+
+        BlocProvider(create: (context) => FilterCubit()),
       ],
       child: ToastificationWrapper(
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Material App',
-          home: MainScreen(),
+          home: FilterScreenCubit(),
           //routerConfig: RoutesManager.routerConfig,
         ),
       ),
