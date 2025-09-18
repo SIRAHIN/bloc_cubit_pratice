@@ -1,12 +1,14 @@
 import 'package:bloc_practice/data/cubit/filter_cubit/filter_cubit.dart';
 import 'package:bloc_practice/data/cubit/filter_cubit/filter_cubit_state.dart';
+import 'package:bloc_practice/data/cubit/theme_change_cubit/theme_change_cubit.dart';
+import 'package:bloc_practice/data/cubit/theme_change_cubit/theme_change_state.dart';
 import 'package:bloc_practice/data/grocery_data.dart';
 import 'package:bloc_practice/data/models/grocery_model/grocery_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FilterScreenCubit extends StatelessWidget {
-   FilterScreenCubit({super.key});
+  FilterScreenCubit({super.key});
 
   TextEditingController searchController = TextEditingController();
 
@@ -15,6 +17,16 @@ class FilterScreenCubit extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Filter Search"),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        actions: [
+          BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
+            builder: (context, state) {
+              return Switch(value: state.isDarkMode, onChanged: (value) {
+                context.read<ThemeChangeCubit>().toggleTheme(value);
+              });
+            },
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -24,11 +36,13 @@ class FilterScreenCubit extends StatelessWidget {
               children: [
                 TextField(
                   controller: searchController,
-                  onChanged: (value) => context.read<FilterCubit>().FilterItem(value),
+                  onChanged: (value) =>
+                      context.read<FilterCubit>().FilterItem(value),
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(width: 2, color: Colors.teal))),
+                          borderSide: BorderSide(
+                              width: 2,
+                              color: Theme.of(context).colorScheme.primary))),
                 ),
                 if (state is FilterInitial)
                   Expanded(
@@ -39,10 +53,16 @@ class FilterScreenCubit extends StatelessWidget {
                         final data = state.initalData[index];
                         return Card(
                           margin: EdgeInsets.all(8),
-                          color: Colors.teal,
+                          color: Theme.of(context).colorScheme.primary,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(data.name),
+                            child: Text(
+                              data.name,
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onSecondary),
+                            ),
                           ),
                         );
                       },

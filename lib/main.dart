@@ -21,6 +21,8 @@ import 'package:bloc_practice/data/cubit/on_boading_cubit/on_boading_cubit.dart'
 import 'package:bloc_practice/data/cubit/pagination_cubit/pagination_cubit.dart';
 import 'package:bloc_practice/data/cubit/status_cubit/status_cubit.dart';
 import 'package:bloc_practice/data/cubit/switch_slider/cubit/switch_slider_cubit.dart';
+import 'package:bloc_practice/data/cubit/theme_change_cubit/theme_change_cubit.dart';
+import 'package:bloc_practice/data/cubit/theme_change_cubit/theme_change_state.dart';
 import 'package:bloc_practice/data/cubit/todo_app/todo_cubit.dart';
 import 'package:bloc_practice/data/data_provider/post_data_provider.dart';
 import 'package:bloc_practice/data/data_provider/post_details_provider.dart';
@@ -79,9 +81,11 @@ void main() async {
   HiveBoxConst.instance.todoBox =
       await Hive.openBox<TodoModel>(HiveBoxConst.todoBoxName);
   HiveBoxConst.instance.groceryBox =
-      await Hive.openBox<GroceryItem>(HiveBoxConst.groceryBoxName);    
+      await Hive.openBox<GroceryItem>(HiveBoxConst.groceryBoxName);
   HiveBoxConst.instance.checkStateBox =
-      await Hive.openBox<AttendanceModel>(HiveBoxConst.checkStateBoxname);    
+      await Hive.openBox<AttendanceModel>(HiveBoxConst.checkStateBoxname);
+
+  HiveBoxConst.instance.themeBox = await Hive.openBox<bool>(HiveBoxConst.themeBoxName);    
   runApp(const MyApp());
 }
 
@@ -90,6 +94,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeMode themeMode = ThemeMode.system;
     return
         // MultiRepositoryProvider(
         //   providers: [
@@ -178,19 +183,46 @@ class MyApp extends StatelessWidget {
         ),
 
         BlocProvider(create: (context) => GroceryBloc()),
-        
+
         BlocProvider(create: (context) => getIt<PaginationCubit>()),
 
         BlocProvider(create: (context) => CheckinOutCubit()),
 
         BlocProvider(create: (context) => FilterCubit()),
+
+        BlocProvider(create: (context) => ThemeChangeCubit()),
       ],
       child: ToastificationWrapper(
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Material App',
-          home: FilterScreenCubit(),
-          //routerConfig: RoutesManager.routerConfig,
+        child: BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
+          builder: (context, state) {
+            return MaterialApp(
+              themeMode: state.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+              theme: ThemeData(
+                brightness: Brightness.light,
+                colorScheme: ColorScheme.light(
+                  primary: Colors.blue, // Your primary color for light theme
+                  secondary:
+                      Colors.green, // Your secondary color for light theme
+                  background: Colors.white, // Background color for light theme
+                  // ... other colors
+                ),
+                // ... other theme properties like appBarTheme, textTheme, etc.
+              ),
+              darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                colorScheme: ColorScheme.dark(
+                  primary: Colors.indigo, // Your primary color for dark theme
+                  secondary: Colors.teal, // Your secondary color for dark theme
+                  background: Colors.black, // Background color for dark theme
+                  // ... other colors
+                ),
+              ),
+              debugShowCheckedModeBanner: false,
+              title: 'Material App',
+              home: FilterScreenCubit(),
+              //routerConfig: RoutesManager.routerConfig,
+            );
+          },
         ),
       ),
       // ),

@@ -29,4 +29,7 @@ class HiveBoxConst {
   
   late Box<AttendanceModel> checkStateBox;
 
+  static const String themeBoxName = "theme_box";
+  late Box<bool> themeBox;
+
 }
