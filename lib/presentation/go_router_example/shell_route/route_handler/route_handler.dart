@@ -2,6 +2,8 @@ import 'package:bloc_practice/presentation/go_router_example/shell_route/main_bo
 import 'package:bloc_practice/presentation/go_router_example/shell_route/nav_pages/home_nav_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/shell_route/nav_pages/home_nested_page/home_nested_details_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/shell_route/nav_pages/home_to_page/home_to_request_page.dart';
+import 'package:bloc_practice/presentation/go_router_example/shell_route/nav_pages/home_to_page/tab_pages/tab1page.dart';
+import 'package:bloc_practice/presentation/go_router_example/shell_route/nav_pages/home_to_page/tab_pages/tab2page.dart';
 import 'package:bloc_practice/presentation/go_router_example/shell_route/nav_pages/profile_nav_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/shell_route/nav_pages/settings_nav_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/shell_route/spalsh_nav.dart';
@@ -24,23 +26,41 @@ class RouteHandler {
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/home',
-                builder: (context, state) {
-                  return HomeNavPage();
+                  path: '/home',
+                  builder: (context, state) {
+                    return HomeNavPage();
+                  },
+                  routes: [
+                    GoRoute(
+                      path: 'home-nested-details',
+                      builder: (context, state) {
+                        return HomeNestedDetailsPage();
+                      },
+                    )
+                  ]),
+              StatefulShellRoute.indexedStack(
+                builder: (context, state, navigationShell) {
+                  return HomeToRequestShell(navigationShell: navigationShell);
                 },
-                routes: [
-                  GoRoute(path: 'home-nested-details',
-                  builder: (context, state) {
-                    return HomeNestedDetailsPage();
-                  },
-                  )
-                ]
-              ),
-                GoRoute(path: '/home-to-request',
-                  builder: (context, state) {
-                    return HomeToRequestPage();
-                  },
-                  )
+                branches: [
+                  StatefulShellBranch(
+                    routes: [
+                      GoRoute(
+                        path: '/home/tab1',
+                        builder: (context, state) => const Tab1page(),
+                      ),
+                    ],
+                  ),
+                  StatefulShellBranch(
+                    routes: [
+                      GoRoute(
+                        path: '/home/tab2',
+                        builder: (context, state) => const Tab2page(),
+                      ),
+                    ],
+                  ),
+                ],
+              )
             ],
           ),
           StatefulShellBranch(
@@ -62,7 +82,7 @@ class RouteHandler {
             ],
           ),
         ],
-      )
+      ),
     ],
   );
 }
