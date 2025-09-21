@@ -47,6 +47,7 @@ import 'package:bloc_practice/presentation/cubit_screens/switch_slider_cubit_scr
 import 'package:bloc_practice/presentation/cubit_screens/todo_screen/todo_list_screen.dart';
 import 'package:bloc_practice/presentation/go_router_example/home_page.dart';
 import 'package:bloc_practice/presentation/go_router_example/routes_manager.dart';
+import 'package:bloc_practice/presentation/go_router_example/shell_route/route_handler/route_handler.dart';
 import 'package:bloc_practice/presentation/hive_screen/const/hive_box_const.dart';
 import 'package:bloc_practice/presentation/hive_screen/hive_main_screen.dart';
 import 'package:bloc_practice/presentation/hive_screen/hive_model/attendance_model/attendance_model.dart';
@@ -85,7 +86,8 @@ void main() async {
   HiveBoxConst.instance.checkStateBox =
       await Hive.openBox<AttendanceModel>(HiveBoxConst.checkStateBoxname);
 
-  HiveBoxConst.instance.themeBox = await Hive.openBox<bool>(HiveBoxConst.themeBoxName);    
+  HiveBoxConst.instance.themeBox =
+      await Hive.openBox<bool>(HiveBoxConst.themeBoxName);
   runApp(const MyApp());
 }
 
@@ -195,7 +197,7 @@ class MyApp extends StatelessWidget {
       child: ToastificationWrapper(
         child: BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
           builder: (context, state) {
-            return MaterialApp(
+            return MaterialApp.router(
               themeMode: state.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               theme: ThemeData(
                 brightness: Brightness.light,
@@ -219,8 +221,8 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               title: 'Material App',
-              home: FilterScreenCubit(),
-              //routerConfig: RoutesManager.routerConfig,
+              //home: FilterScreenCubit(),
+              routerConfig: RouteHandler.routerConfig,
             );
           },
         ),
