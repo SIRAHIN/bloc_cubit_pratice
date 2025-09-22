@@ -9,9 +9,8 @@ class SecondScreenCubit extends Cubit<SecondScreenState> {
   }
 
   void callApi() async{
-    emit(state.copyWith(index: state.index, isLoaded: false));
-    print("api called");
+    emit(state.copyWith(isLoaded: false));
     await Future.delayed(Duration(seconds: 3));
-    emit(state.copyWith(index: state.index, isLoaded: true));
+    emit(state.copyWith(isLoaded: true));
   }
 }
