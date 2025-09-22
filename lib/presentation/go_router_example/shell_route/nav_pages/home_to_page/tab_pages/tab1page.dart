@@ -27,26 +27,34 @@ class _Tab1pageState extends State<Tab1page> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<SecondScreenCubit, SecondScreenState>(
-        builder: (context, state) {
-          if (state.isLoaded) {
-            return Container(
-              width: double.maxFinite,
-              height: double.maxFinite,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('This is Tab 1 Page'),
-                ],
-              ),
-            );
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        },
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: RefreshIndicator(
+      onRefresh: () async {
+        return context.read<SecondScreenCubit>().callApi();
+      },
+      child: SingleChildScrollView(   // make it scrollable
+        physics: const AlwaysScrollableScrollPhysics(), // allow scroll even if content is small
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height, // fill screen
+          width: double.infinity,
+          child: BlocBuilder<SecondScreenCubit, SecondScreenState>(
+            builder: (context, state) {
+              if (state.isLoaded) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text('This is Tab 1 Page'),
+                  ],
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+        ),
       ),
-    );
-  }
+    ),
+  );
+}
 }
