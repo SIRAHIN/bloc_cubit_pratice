@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'fragments/second_screen.dart';
+import 'fragments/second_screen/screen/second_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});

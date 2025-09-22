@@ -55,7 +55,7 @@ _$AttendanceModelImpl _$$AttendanceModelImplFromJson(
     _$AttendanceModelImpl(
       checkIn: json['checkIn'] as String,
       checkOut: json['checkOut'] as String?,
-      isCheckin: json['isCheckin'] as bool? ?? true,
+      isCheckin: json['isCheckin'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$AttendanceModelImplToJson(

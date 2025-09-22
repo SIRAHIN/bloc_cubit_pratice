@@ -35,6 +35,7 @@ import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_sc
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/cubit/first_screen_cubit.dart';
+import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/second_screen/cubit/second_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/main_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/filter_screen_cubit/filter_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/image_picker_screen/image_picker_cubit_screen.dart';
@@ -193,11 +194,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => FilterCubit()),
 
         BlocProvider(create: (context) => ThemeChangeCubit()),
+
+        BlocProvider(create: (context) => SecondScreenCubit())
       ],
       child: ToastificationWrapper(
         child: BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
           builder: (context, state) {
-            return MaterialApp.router(
+            return MaterialApp(
               themeMode: state.isDarkMode ? ThemeMode.dark : ThemeMode.light,
               theme: ThemeData(
                 brightness: Brightness.light,
@@ -221,8 +224,8 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               title: 'Material App',
-              //home: FilterScreenCubit(),
-              routerConfig: RouteHandler.routerConfig,
+              home: MainScreen(),
+              //routerConfig: RouteHandler.routerConfig,
             );
           },
         ),

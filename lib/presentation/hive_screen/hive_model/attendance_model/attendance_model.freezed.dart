@@ -139,7 +139,7 @@ class _$AttendanceModelImpl implements _AttendanceModel {
   const _$AttendanceModelImpl(
       {@HiveField(0) required this.checkIn,
       @HiveField(1) this.checkOut,
-      @HiveField(2) this.isCheckin = true});
+      @HiveField(2) this.isCheckin = false});
 
   factory _$AttendanceModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttendanceModelImplFromJson(json);
