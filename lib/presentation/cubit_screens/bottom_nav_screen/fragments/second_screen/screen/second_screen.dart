@@ -33,7 +33,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     isSelected: state.index == 0,
                     onTap: () => context
                         .read<SecondScreenCubit>()
-                        .changeTabIndex(value: 0),
+                        .changeTabIndex(value: 0,),
                   ),
                   _CustomTabButton(
                     label: "Tab 2",

@@ -5,6 +5,12 @@ class SecondScreenCubit extends Cubit<SecondScreenState> {
   SecondScreenCubit() : super(SecondScreenState(index: 0));
 
   void changeTabIndex({required int value}) {
-    emit(SecondScreenState(index: value));
+    emit(SecondScreenState(index: value, isLoaded: state.isLoaded));
+  }
+
+  void callApi() async{
+    print("api called");
+    await Future.delayed(Duration(seconds: 3));
+    emit(state.copyWith(index: state.index, isLoaded: true));
   }
 }

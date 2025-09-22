@@ -1,4 +1,7 @@
+import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/second_screen/cubit/second_screen_cubit.dart';
+import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/second_screen/cubit/second_screen_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Tab1page extends StatefulWidget {
   const Tab1page({super.key});
@@ -8,28 +11,28 @@ class Tab1page extends StatefulWidget {
 }
 
 class _Tab1pageState extends State<Tab1page> {
-
   ValueNotifier<bool> visibilityFlag = ValueNotifier(false);
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-   Future.delayed(const Duration(seconds: 2), () async {
-    visibilityFlag.value = true;
-  });
+    final cubit = context.read<SecondScreenCubit>();
+
+    // Only call API if data not loaded yet
+    if (!cubit.state.isLoaded) {
+      cubit.callApi();
+    }
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ValueListenableBuilder(
-        valueListenable: visibilityFlag,
-        builder: (context, flag, _) {
-          return Visibility(
-            visible: visibilityFlag.value,
-            replacement: CircularProgressIndicator(),
-            child: Container(
+      body: BlocBuilder<SecondScreenCubit, SecondScreenState>(
+        builder: (context, state) {
+          if (state.isLoaded) {
+            return Container(
               width: double.maxFinite,
               height: double.maxFinite,
               child: Column(
@@ -38,9 +41,11 @@ class _Tab1pageState extends State<Tab1page> {
                   Text('This is Tab 1 Page'),
                 ],
               ),
-            ),
-          );
-        }
+            );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
       ),
     );
   }
