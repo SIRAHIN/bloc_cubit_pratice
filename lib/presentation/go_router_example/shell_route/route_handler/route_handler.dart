@@ -14,30 +14,36 @@ class RouteHandler {
     initialLocation: '/',
     routes: [
       GoRoute(
-          path: '/',
-          builder: (context, state) {
-            return SpalshNav();
-          }),
+        path: '/',
+        builder: (context, state) {
+          return SpalshNav();
+        },
+      ),
+
+      // Bottom Nav Shell Route //
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainBottomNavShell(navigationShell: navigationShell);
         },
         branches: [
+          // Home Branch //
           StatefulShellBranch(
             routes: [
               GoRoute(
-                  path: '/home',
-                  builder: (context, state) {
-                    return HomeNavPage();
-                  },
-                  routes: [
-                    GoRoute(
-                      path: 'home-nested-details',
-                      builder: (context, state) {
-                        return HomeNestedDetailsPage();
-                      },
-                    )
-                  ]),
+                path: '/home',
+                builder: (context, state) {
+                  return HomeNavPage();
+                },
+                routes: [
+                  GoRoute(
+                    path: 'home-nested-details',
+                    builder: (context, state) {
+                      return HomeNestedDetailsPage();
+                    },
+                  )
+                ],
+              ),
+              // From home to request page to select first tab and stored the state //
               StatefulShellRoute.indexedStack(
                 builder: (context, state, navigationShell) {
                   return HomeToRequestShell(navigationShell: navigationShell);
@@ -63,6 +69,7 @@ class RouteHandler {
               )
             ],
           ),
+          // Profile Branch //
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -72,6 +79,7 @@ class RouteHandler {
                   }),
             ],
           ),
+          // Settings Branch //
           StatefulShellBranch(
             routes: [
               GoRoute(
