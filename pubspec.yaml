@@ -57,6 +57,8 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   onesignal_flutter: ^5.3.4
   intl: ^0.20.2
+  geolocator: ^10.1.0
+  weather: ^3.2.1
 
 dev_dependencies:
   flutter_test:

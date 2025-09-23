@@ -5,9 +5,11 @@ import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_bloc.dart
 import 'package:bloc_practice/data/bloc/counter/counter_bloc.dart';
 import 'package:bloc_practice/data/bloc/grocery_bloc/grocery_bloc.dart';
 import 'package:bloc_practice/data/bloc/loader/loader_bloc.dart';
+import 'package:bloc_practice/data/bloc/location_bloc/bloc/location_bloc_bloc.dart';
 import 'package:bloc_practice/data/bloc/login/login_bloc.dart';
 import 'package:bloc_practice/data/bloc/status_bloc/status_bloc.dart';
 import 'package:bloc_practice/data/bloc/switch_slider/bloc/switch_slider_bloc.dart';
+import 'package:bloc_practice/data/bloc/weather_bloc/bloc/weather_bloc_bloc.dart';
 import 'package:bloc_practice/data/cubit/bottom_nav_screen_cubit/bottom_nav_screen_cubit.dart';
 import 'package:bloc_practice/data/cubit/counter/counter_cubit.dart';
 import 'package:bloc_practice/data/cubit/cubit_post_api/cubit/cubit_post.dart';
@@ -35,6 +37,7 @@ import 'package:bloc_practice/presentation/bloc_screens/login_bloc_screen/login_
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
+import 'package:bloc_practice/presentation/bloc_screens/weather_app_bloc_screen/weather_home_bloc_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/cubit/first_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/second_screen/cubit/second_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/main_screen.dart';
@@ -196,7 +199,11 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(create: (context) => ThemeChangeCubit()),
 
-        BlocProvider(create: (context) => SecondScreenCubit())
+        BlocProvider(create: (context) => SecondScreenCubit()),
+
+        BlocProvider(create: (context) => WeatherBlocBloc()),
+
+        BlocProvider(create: (context) => LocationBlocBloc())
       ],
       child: ToastificationWrapper(
         child: BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
