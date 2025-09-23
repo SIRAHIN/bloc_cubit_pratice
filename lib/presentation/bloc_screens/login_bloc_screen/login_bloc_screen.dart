@@ -13,7 +13,6 @@ class LoginBlocScreen extends StatefulWidget {
 }
 
 class _LoginBlocScreenState extends State<LoginBlocScreen> {
-  
   late final TextEditingController _userEmailCtr;
   late final TextEditingController _userPasswordCtr;
 
@@ -39,21 +38,21 @@ class _LoginBlocScreenState extends State<LoginBlocScreen> {
     return Scaffold(
       body: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
-          if (state is LoginFailuer) {
+          if (state.status == LoaginStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(state.failuerText),
+                content: Text(state.failuerText ?? ''),
               ),
             );
           }
 
-          if (state is LoginSuccess) {
+          if (state.status == LoaginStatus.success) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => HomeScreen()));
           }
         },
         builder: (context, state) {
-          if (state is LoginLoading) {
+          if (state.status == LoaginStatus.loading) {
             return Center(child: CircularProgressIndicator());
           }
           return Padding(
@@ -77,11 +76,9 @@ class _LoginBlocScreenState extends State<LoginBlocScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    context.read<LoginBloc>().add(
-                          LoginRequested(
-                              userEmail: _userEmailCtr.text,
-                              userPassword: _userPasswordCtr.text),
-                        );
+                    context.read<LoginBloc>().add(LoginEvent.logIn(
+                        userEmial: _userEmailCtr.text,
+                        userPasswrod: _userPasswordCtr.text));
                   },
                   child: Icon(Icons.arrow_forward_ios_rounded),
                 )

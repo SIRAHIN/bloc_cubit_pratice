@@ -31,6 +31,7 @@ import 'package:bloc_practice/data/repository/post_details_repository.dart';
 import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:bloc_practice/data/service/internet_service/internet_service.dart';
 import 'package:bloc_practice/presentation/bloc_screens/grocery_bloc_screen/grocery_bloc_screen.dart';
+import 'package:bloc_practice/presentation/bloc_screens/login_bloc_screen/login_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
@@ -224,7 +225,7 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               title: 'Material App',
-              home: MainScreen(),
+              home: LoginBlocScreen(),
               //routerConfig: RouteHandler.routerConfig,
             );
           },

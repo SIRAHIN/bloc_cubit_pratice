@@ -13,31 +13,29 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) {
-            if (state is LoginInitial) {
+            if (state.status == LoaginStatus.inital) {
               Navigator.of(context).pop();
             }
 
-            if (state is LoginFailuer) {
+            if (state.status == LoaginStatus.error) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(state.failuerText),
+                  content: Text(state.failuerText ?? ""),
                 ),
               );
             }
           },
           builder: (context, state) {
-            if (state is LoginLoading) {
+            if (state.status == LoaginStatus.loading) {
               return CircularProgressIndicator();
-            } else if (state is LoginSuccess) {
+            } else if (state.status == LoaginStatus.success) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(state.successText),
+                  Text(state.successText ?? ''),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<LoginBloc>().add(
-                            LogoutRequested(),
-                          );
+                      context.read<LoginBloc>().add(LoginEvent.logOut());
                     },
                     child: Icon(Icons.login),
                   )
