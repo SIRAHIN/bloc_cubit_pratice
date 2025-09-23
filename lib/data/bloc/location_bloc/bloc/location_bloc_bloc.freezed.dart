@@ -504,7 +504,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
     Object? userPosition = null,
   }) {
     return _then(_$LoadedImpl(
-      null == userPosition
+      userPosition: null == userPosition
           ? _value.userPosition
           : userPosition // ignore: cast_nullable_to_non_nullable
               as Position,
@@ -515,7 +515,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.userPosition);
+  const _$LoadedImpl({required this.userPosition});
 
   @override
   final Position userPosition;
@@ -621,7 +621,7 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements LocationBlocState {
-  const factory _Loaded(final Position userPosition) = _$LoadedImpl;
+  const factory _Loaded({required final Position userPosition}) = _$LoadedImpl;
 
   Position get userPosition;
 

@@ -233,49 +233,14 @@ abstract class _featchWeather implements WeatherBlocEvent {
 
 /// @nodoc
 mixin _$WeatherBlocState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Weather weatherData) loadedWeather,
-    required TResult Function(String message) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Weather weatherData)? loadedWeather,
-    TResult? Function(String message)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Weather weatherData)? loadedWeather,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedWeather value) loadedWeather,
-    required TResult Function(_Error value) error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedWeather value)? loadedWeather,
-    TResult? Function(_Error value)? error,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedWeather value)? loadedWeather,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) =>
+  WeatherStatus get status => throw _privateConstructorUsedError;
+  Weather? get weather => throw _privateConstructorUsedError;
+  String? get error => throw _privateConstructorUsedError;
+
+  /// Create a copy of WeatherBlocState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $WeatherBlocStateCopyWith<WeatherBlocState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -284,6 +249,8 @@ abstract class $WeatherBlocStateCopyWith<$Res> {
   factory $WeatherBlocStateCopyWith(
           WeatherBlocState value, $Res Function(WeatherBlocState) then) =
       _$WeatherBlocStateCopyWithImpl<$Res, WeatherBlocState>;
+  @useResult
+  $Res call({WeatherStatus status, Weather? weather, String? error});
 }
 
 /// @nodoc
@@ -298,134 +265,47 @@ class _$WeatherBlocStateCopyWithImpl<$Res, $Val extends WeatherBlocState>
 
   /// Create a copy of WeatherBlocState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? weather = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as WeatherStatus,
+      weather: freezed == weather
+          ? _value.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as Weather?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$WeatherBlocStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of WeatherBlocState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
+abstract class _$$WeatherBlocStateImplCopyWith<$Res>
+    implements $WeatherBlocStateCopyWith<$Res> {
+  factory _$$WeatherBlocStateImplCopyWith(_$WeatherBlocStateImpl value,
+          $Res Function(_$WeatherBlocStateImpl) then) =
+      __$$WeatherBlocStateImplCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'WeatherBlocState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Weather weatherData) loadedWeather,
-    required TResult Function(String message) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Weather weatherData)? loadedWeather,
-    TResult? Function(String message)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Weather weatherData)? loadedWeather,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedWeather value) loadedWeather,
-    required TResult Function(_Error value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedWeather value)? loadedWeather,
-    TResult? Function(_Error value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedWeather value)? loadedWeather,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements WeatherBlocState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadedWeatherImplCopyWith<$Res> {
-  factory _$$LoadedWeatherImplCopyWith(
-          _$LoadedWeatherImpl value, $Res Function(_$LoadedWeatherImpl) then) =
-      __$$LoadedWeatherImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Weather weatherData});
+  $Res call({WeatherStatus status, Weather? weather, String? error});
 }
 
 /// @nodoc
-class __$$LoadedWeatherImplCopyWithImpl<$Res>
-    extends _$WeatherBlocStateCopyWithImpl<$Res, _$LoadedWeatherImpl>
-    implements _$$LoadedWeatherImplCopyWith<$Res> {
-  __$$LoadedWeatherImplCopyWithImpl(
-      _$LoadedWeatherImpl _value, $Res Function(_$LoadedWeatherImpl) _then)
+class __$$WeatherBlocStateImplCopyWithImpl<$Res>
+    extends _$WeatherBlocStateCopyWithImpl<$Res, _$WeatherBlocStateImpl>
+    implements _$$WeatherBlocStateImplCopyWith<$Res> {
+  __$$WeatherBlocStateImplCopyWithImpl(_$WeatherBlocStateImpl _value,
+      $Res Function(_$WeatherBlocStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of WeatherBlocState
@@ -433,273 +313,86 @@ class __$$LoadedWeatherImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? weatherData = null,
+    Object? status = null,
+    Object? weather = freezed,
+    Object? error = freezed,
   }) {
-    return _then(_$LoadedWeatherImpl(
-      null == weatherData
-          ? _value.weatherData
-          : weatherData // ignore: cast_nullable_to_non_nullable
-              as Weather,
+    return _then(_$WeatherBlocStateImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as WeatherStatus,
+      weather: freezed == weather
+          ? _value.weather
+          : weather // ignore: cast_nullable_to_non_nullable
+              as Weather?,
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoadedWeatherImpl implements _LoadedWeather {
-  const _$LoadedWeatherImpl(this.weatherData);
+class _$WeatherBlocStateImpl implements _WeatherBlocState {
+  const _$WeatherBlocStateImpl(
+      {this.status = WeatherStatus.inital, this.weather, this.error});
 
   @override
-  final Weather weatherData;
+  @JsonKey()
+  final WeatherStatus status;
+  @override
+  final Weather? weather;
+  @override
+  final String? error;
 
   @override
   String toString() {
-    return 'WeatherBlocState.loadedWeather(weatherData: $weatherData)';
+    return 'WeatherBlocState(status: $status, weather: $weather, error: $error)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedWeatherImpl &&
-            (identical(other.weatherData, weatherData) ||
-                other.weatherData == weatherData));
+            other is _$WeatherBlocStateImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.weather, weather) || other.weather == weather) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, weatherData);
+  int get hashCode => Object.hash(runtimeType, status, weather, error);
 
   /// Create a copy of WeatherBlocState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedWeatherImplCopyWith<_$LoadedWeatherImpl> get copyWith =>
-      __$$LoadedWeatherImplCopyWithImpl<_$LoadedWeatherImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Weather weatherData) loadedWeather,
-    required TResult Function(String message) error,
-  }) {
-    return loadedWeather(weatherData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Weather weatherData)? loadedWeather,
-    TResult? Function(String message)? error,
-  }) {
-    return loadedWeather?.call(weatherData);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Weather weatherData)? loadedWeather,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (loadedWeather != null) {
-      return loadedWeather(weatherData);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedWeather value) loadedWeather,
-    required TResult Function(_Error value) error,
-  }) {
-    return loadedWeather(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedWeather value)? loadedWeather,
-    TResult? Function(_Error value)? error,
-  }) {
-    return loadedWeather?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedWeather value)? loadedWeather,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (loadedWeather != null) {
-      return loadedWeather(this);
-    }
-    return orElse();
-  }
+  _$$WeatherBlocStateImplCopyWith<_$WeatherBlocStateImpl> get copyWith =>
+      __$$WeatherBlocStateImplCopyWithImpl<_$WeatherBlocStateImpl>(
+          this, _$identity);
 }
 
-abstract class _LoadedWeather implements WeatherBlocState {
-  const factory _LoadedWeather(final Weather weatherData) = _$LoadedWeatherImpl;
+abstract class _WeatherBlocState implements WeatherBlocState {
+  const factory _WeatherBlocState(
+      {final WeatherStatus status,
+      final Weather? weather,
+      final String? error}) = _$WeatherBlocStateImpl;
 
-  Weather get weatherData;
+  @override
+  WeatherStatus get status;
+  @override
+  Weather? get weather;
+  @override
+  String? get error;
 
   /// Create a copy of WeatherBlocState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedWeatherImplCopyWith<_$LoadedWeatherImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$WeatherBlocStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of WeatherBlocState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_$ErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.message);
-
-  @override
-  final String message;
-
-  @override
-  String toString() {
-    return 'WeatherBlocState.error(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of WeatherBlocState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(Weather weatherData) loadedWeather,
-    required TResult Function(String message) error,
-  }) {
-    return error(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(Weather weatherData)? loadedWeather,
-    TResult? Function(String message)? error,
-  }) {
-    return error?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(Weather weatherData)? loadedWeather,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadedWeather value) loadedWeather,
-    required TResult Function(_Error value) error,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadedWeather value)? loadedWeather,
-    TResult? Function(_Error value)? error,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadedWeather value)? loadedWeather,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Error implements WeatherBlocState {
-  const factory _Error(final String message) = _$ErrorImpl;
-
-  String get message;
-
-  /// Create a copy of WeatherBlocState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$WeatherBlocStateImplCopyWith<_$WeatherBlocStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

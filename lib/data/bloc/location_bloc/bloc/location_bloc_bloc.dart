@@ -15,7 +15,7 @@ class LocationBlocBloc extends Bloc<LocationBlocEvent, LocationBlocState> {
             emit(LocationBlocState.loading());
             try {
               final position = await _determinePosition();
-              emit(LocationBlocState.loaded(position));
+              emit(LocationBlocState.loaded(userPosition: position));
             } catch (e) {
               emit(LocationBlocState.error(e.toString()));
             }

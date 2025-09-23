@@ -232,7 +232,7 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               title: 'Material App',
-              home: LoginBlocScreen(),
+              home: WeatherHomeBlocScreen(),
               //routerConfig: RouteHandler.routerConfig,
             );
           },
