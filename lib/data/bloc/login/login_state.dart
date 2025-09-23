@@ -20,6 +20,8 @@ part 'login_state.freezed.dart';
 //   LoginFailuer({required this.failuerText});
 // }
 
+
+// State class with single class //
 enum LoaginStatus{
   inital, loading, success, error
 }
@@ -31,3 +33,12 @@ class LoginState with _$LoginState{
     String? failuerText,
   }) = _LoginState;
 }
+
+// State class with seprated class //
+// @freezed
+// class ProductState with _$ProductState {
+//   const factory ProductState.initial() = _Initial;
+//   const factory ProductState.loading() = _Loading;
+//   const factory ProductState.loaded({required List<Product> products, required @Default(LoaginStatus.inital) LoaginStatus status }) = _Loaded;
+//   const factory ProductState.error(String message) = _Error;
+// }
