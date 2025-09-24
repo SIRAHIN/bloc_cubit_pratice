@@ -155,9 +155,7 @@ class MyApp extends StatelessWidget {
 
         // Cubit Api Calling Provider //
         BlocProvider(
-            create: (context) => CubitPost(
-                // getIt<PostRepository>()
-                )),
+            create: (context) => getIt<CubitPost>()),
 
         BlocProvider(
           create: (context) => getIt<PostDetailsCubit>(),
