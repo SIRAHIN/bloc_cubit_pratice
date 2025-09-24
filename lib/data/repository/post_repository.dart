@@ -6,8 +6,9 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class PostRepository {
-  final PostDataProvider postDataProvider = getIt<PostDataProvider>();
-  PostRepository();
+  final PostDataProvider postDataProvider ;
+  //= getIt<PostDataProvider>();
+  PostRepository(this.postDataProvider);
 
   List<PostModel> postModel = [];
 

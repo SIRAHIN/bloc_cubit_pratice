@@ -11,6 +11,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../data/cubit/cubit_post_api/cubit/cubit_post.dart' as _i26;
 import '../../data/cubit/cubit_post_details/cubit/post_details_cubit.dart'
     as _i5;
 import '../../data/cubit/pagination_cubit/pagination_cubit.dart' as _i709;
@@ -37,7 +38,6 @@ _i174.GetIt $initGetIt(
     environmentFilter,
   );
   gh.factory<_i738.ApiService>(() => _i738.ApiService());
-  gh.factory<_i180.PostRepository>(() => _i180.PostRepository());
   gh.factory<_i61.PostDetailsRepository>(() => _i61.PostDetailsRepository());
   gh.factory<_i588.PostDataProvider>(() => _i588.PostDataProvider());
   gh.factory<_i438.PostDetailsProvider>(() => _i438.PostDetailsProvider());
@@ -51,7 +51,10 @@ _i174.GetIt $initGetIt(
       () => _i5.PostDetailsCubit(gh<_i61.PostDetailsRepository>()));
   gh.factory<_i709.PaginationCubit>(
       () => _i709.PaginationCubit(gh<_i459.PaginationRepository>()));
+  gh.factory<_i180.PostRepository>(
+      () => _i180.PostRepository(gh<_i588.PostDataProvider>()));
   gh.lazySingleton<_i137.ApiServiceTest>(
       () => _i137.ApiServiceTestImp(gh<_i180.PostRepository>()));
+  gh.factory<_i26.CubitPost>(() => _i26.CubitPost(gh<_i180.PostRepository>()));
   return getIt;
 }

@@ -203,7 +203,7 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(create: (context) => WeatherBlocBloc()),
 
-        BlocProvider(create: (context) => LocationBlocBloc())
+        BlocProvider(create: (context) => LocationBlocBloc()..add(LocationBlocEvent.getCurrentLocation()))
       ],
       child: ToastificationWrapper(
         child: BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
