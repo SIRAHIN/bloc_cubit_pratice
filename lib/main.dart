@@ -39,6 +39,7 @@ import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/statu
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/weather_app_bloc_screen/weather_home_bloc_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/first_screen/screen/cubit/first_screen_cubit.dart';
+import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/second_screen/bloc/bottom_sheet_bloc.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/fragments/second_screen/cubit/second_screen_cubit.dart';
 import 'package:bloc_practice/presentation/cubit_screens/bottom_nav_screen/main_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/filter_screen_cubit/filter_screen_cubit.dart';
@@ -201,7 +202,9 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(create: (context) => WeatherBlocBloc()),
 
-        BlocProvider(create: (context) => LocationBlocBloc()..add(LocationBlocEvent.getCurrentLocation()))
+        BlocProvider(create: (context) => LocationBlocBloc()..add(LocationBlocEvent.getCurrentLocation())),
+
+        BlocProvider(create: (context) => BottomSheetBloc())
       ],
       child: ToastificationWrapper(
         child: BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
@@ -230,7 +233,7 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               title: 'Material App',
-              home: WeatherHomeBlocScreen(),
+              home: MainScreen(),
               //routerConfig: RouteHandler.routerConfig,
             );
           },
