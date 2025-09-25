@@ -59,6 +59,8 @@ dependencies:
   intl: ^0.20.2
   geolocator: ^10.1.0
   weather: ^3.2.1
+  sliding_up_panel: ^2.0.0+1
+  maplibre_gl: ^0.19.0
 
 dev_dependencies:
   flutter_test:

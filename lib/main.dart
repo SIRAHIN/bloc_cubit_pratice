@@ -1,5 +1,6 @@
 import 'package:bloc_practice/dart_practice/context_mounted_test/page1.dart';
 import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
+import 'package:bloc_practice/data/bloc/bloc/reverse_geo_bloc.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_api/api_calling_bloc.dart';
 import 'package:bloc_practice/data/bloc/bloc_post_details/post_details_bloc.dart';
 import 'package:bloc_practice/data/bloc/counter/counter_bloc.dart';
@@ -34,6 +35,7 @@ import 'package:bloc_practice/data/repository/post_repository.dart';
 import 'package:bloc_practice/data/service/internet_service/internet_service.dart';
 import 'package:bloc_practice/presentation/bloc_screens/grocery_bloc_screen/grocery_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/login_bloc_screen/login_bloc_screen.dart';
+import 'package:bloc_practice/presentation/bloc_screens/map_screen/main_map_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/post_screen_bloc/post_screen_bloc.dart';
 import 'package:bloc_practice/presentation/bloc_screens/status_bloc_screen/status_bloc_screen.dart';
 import 'package:bloc_practice/presentation/bloc_screens/switch_slider_bloc_screen/switch_slider_bloc_screen.dart';
@@ -204,7 +206,9 @@ class MyApp extends StatelessWidget {
 
         BlocProvider(create: (context) => LocationBlocBloc()..add(LocationBlocEvent.getCurrentLocation())),
 
-        BlocProvider(create: (context) => BottomSheetBloc())
+        BlocProvider(create: (context) => BottomSheetBloc()),
+
+        BlocProvider(create: (context) => getIt<ReverseGeoBloc>())
       ],
       child: ToastificationWrapper(
         child: BlocBuilder<ThemeChangeCubit, ThemeChangeState>(
@@ -233,7 +237,7 @@ class MyApp extends StatelessWidget {
               ),
               debugShowCheckedModeBanner: false,
               title: 'Material App',
-              home: MainScreen(),
+              home: MainMapScreen(),
               //routerConfig: RouteHandler.routerConfig,
             );
           },
