@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:bloc_practice/data/api_url/api_url.dart';
 import 'package:bloc_practice/data/models/product_model/product_model.dart';
 import 'package:dio/dio.dart';

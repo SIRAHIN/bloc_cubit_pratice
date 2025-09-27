@@ -1,7 +1,6 @@
 import 'package:bloc_practice/data/cubit/internet_status/internet_status_cubit.dart';
 import 'package:bloc_practice/data/cubit/internet_status/internet_status_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InternetConnectionStatusScreen extends StatefulWidget {

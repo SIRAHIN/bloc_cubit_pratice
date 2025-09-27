@@ -1,5 +1,4 @@
 import 'package:bloc_practice/data/repository/post_repository.dart';
-import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 // For Extends Method //

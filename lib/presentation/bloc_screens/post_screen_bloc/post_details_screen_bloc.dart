@@ -30,7 +30,7 @@ class _PostDetailsScreenBlocState extends State<PostDetailsScreenBloc> {
             if (state is PostDetailsLoading) {
               return Text('Loading...');
             } else if (state is PostDetailsSuccess) {
-              return Text('${state.postModel.title}');
+              return Text(state.postModel.title);
             } else {
               return Text('Error');
             }

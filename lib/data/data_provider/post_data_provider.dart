@@ -1,7 +1,5 @@
-import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/models/post_model/post_model.dart';
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/dio.dart';
 

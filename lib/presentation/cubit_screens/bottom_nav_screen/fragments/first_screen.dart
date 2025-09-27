@@ -1,5 +1,3 @@
-import 'package:bloc_practice/dart_practice/call_back_function.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget {

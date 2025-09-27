@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:bloc_practice/data/bloc/loader/loader_event.dart';
 import 'package:bloc_practice/data/bloc/loader/loader_state.dart';

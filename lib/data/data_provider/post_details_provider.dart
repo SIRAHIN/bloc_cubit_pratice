@@ -1,6 +1,5 @@
 import 'package:bloc_practice/data/models/post_details_model/post_details_model.dart';
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
 import '../service/api_service/api_service.dart';

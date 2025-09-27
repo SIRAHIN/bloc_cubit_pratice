@@ -1,6 +1,3 @@
-import 'package:bloc_practice/data/bloc/counter/counter_bloc.dart';
-import 'package:bloc_practice/data/bloc/counter/counter_event.dart';
-import 'package:bloc_practice/data/bloc/counter/counter_state.dart';
 import 'package:bloc_practice/data/cubit/counter/counter_cubit.dart';
 import 'package:bloc_practice/data/cubit/counter/counter_cubit_state.dart';
 import 'package:bloc_practice/presentation/cubit_screens/counter_cubit_screen/counter_btn_screen_cubit.dart';

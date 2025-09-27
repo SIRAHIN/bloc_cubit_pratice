@@ -1,4 +1,3 @@
-import 'package:bloc_practice/data/bloc/counter/counter_state.dart';
 import 'package:bloc_practice/data/cubit/counter/counter_cubit_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

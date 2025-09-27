@@ -1,11 +1,8 @@
-import 'dart:async';
 
 import 'package:bloc_practice/data/cubit/pagination_cubit/pagination_cubit.dart';
 import 'package:bloc_practice/data/cubit/pagination_cubit/pagination_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:toastification/toastification.dart';
 
 class PaginationScreen extends StatefulWidget {
   const PaginationScreen({super.key});

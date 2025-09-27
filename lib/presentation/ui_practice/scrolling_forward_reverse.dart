@@ -13,7 +13,7 @@ class ScrollingForwardReverse extends StatefulWidget {
 
 class _ScrollingForwardReverseState extends State<ScrollingForwardReverse> {
   final ScrollController _scrollController = ScrollController();
-  ValueNotifier<bool> _isFabShow = ValueNotifier(true);
+  final ValueNotifier<bool> _isFabShow = ValueNotifier(true);
   Timer? _scrollTimer;
 
   @override

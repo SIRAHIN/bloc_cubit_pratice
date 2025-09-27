@@ -12,7 +12,7 @@ class DetailsPage extends StatelessWidget {
         title: Text('The Data is : $productId'),
         
       ),
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Column(

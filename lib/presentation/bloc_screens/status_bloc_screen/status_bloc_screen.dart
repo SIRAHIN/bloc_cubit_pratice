@@ -23,10 +23,10 @@ class StatusBlocScreen extends StatelessWidget {
                       .add(ChangeTaskStatusEvent(TaskStatus.todo)),
                   child: Container(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text("Todo"),
                     color: taskState.status == TaskStatus.todo
                         ? Colors.green
                         : Colors.grey,
+                    child: Text("Todo"),
                   ),
                 ),
 
@@ -36,10 +36,10 @@ class StatusBlocScreen extends StatelessWidget {
                       .add(ChangeTaskStatusEvent(TaskStatus.inProgress)),
                   child: Container(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text("In Progress"),
                     color: taskState.status == TaskStatus.inProgress
                         ? Colors.blue
                         : Colors.grey,
+                    child: Text("In Progress"),
                   ),
                 ),
 
@@ -49,10 +49,10 @@ class StatusBlocScreen extends StatelessWidget {
                       .add(ChangeTaskStatusEvent(TaskStatus.done)),
                   child: Container(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text("Done"),
                     color: taskState.status == TaskStatus.done
                         ? Colors.red
                         : Colors.grey,
+                    child: Text("Done"),
                   ),
                 ),
               ],

@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/data/data_provider/post_details_provider.dart';

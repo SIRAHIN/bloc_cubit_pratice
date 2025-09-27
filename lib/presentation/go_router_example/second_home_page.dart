@@ -53,7 +53,7 @@ class _SecondHomePageState extends State<SecondHomePage> {
   Widget build(BuildContext context) {
     if (typeValue == 'typeFromHomePage') {
       return Scaffold(
-        body: Container(
+        body: SizedBox(
           width: double.maxFinite,
           height: double.maxFinite,
           child: Column(

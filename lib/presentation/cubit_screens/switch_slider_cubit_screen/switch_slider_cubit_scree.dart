@@ -1,5 +1,3 @@
-import 'package:bloc_practice/data/bloc/switch_slider/bloc/switch_slider_bloc.dart';
-import 'package:bloc_practice/data/bloc/switch_slider/bloc/switch_slider_state.dart';
 import 'package:bloc_practice/data/cubit/switch_slider/cubit/switch_slider_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

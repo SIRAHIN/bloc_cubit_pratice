@@ -7,7 +7,7 @@ class TodoCreateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _todoController = TextEditingController();
+    TextEditingController todoController = TextEditingController();
 
     return Scaffold(
       body: Padding(
@@ -16,7 +16,7 @@ class TodoCreateScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: _todoController,
+              controller: todoController,
               decoration: InputDecoration(hintText: 'Enter to todo'),
             ),
             SizedBox(
@@ -24,8 +24,8 @@ class TodoCreateScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                final userText = _todoController.text.trim();
-                _todoController.clear();
+                final userText = todoController.text.trim();
+                todoController.clear();
                 context.read<TodoCubit>().addTodoData(userText);
                 Navigator.pop(context);
               },

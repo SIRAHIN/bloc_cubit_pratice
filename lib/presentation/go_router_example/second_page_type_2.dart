@@ -1,4 +1,3 @@
-import 'package:bloc_practice/dart_practice/depencency_injection/api_service.dart';
 import 'package:bloc_practice/dart_practice/depencency_injection/locator.dart';
 import 'package:bloc_practice/dart_practice/services/api_service.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +25,7 @@ class _SecondPageType2State extends State<SecondPageType2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Column(

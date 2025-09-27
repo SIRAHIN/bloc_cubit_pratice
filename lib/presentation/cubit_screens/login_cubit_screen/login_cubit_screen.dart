@@ -1,9 +1,5 @@
-import 'package:bloc_practice/data/bloc/login/login_bloc.dart';
-import 'package:bloc_practice/data/bloc/login/login_event.dart';
-import 'package:bloc_practice/data/bloc/login/login_state.dart';
 import 'package:bloc_practice/data/cubit/login/login_cubit.dart';
 import 'package:bloc_practice/data/cubit/login/login_cubit_state.dart';
-import 'package:bloc_practice/presentation/bloc_screens/login_bloc_screen/home_screen.dart';
 import 'package:bloc_practice/presentation/cubit_screens/login_cubit_screen/cubit_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

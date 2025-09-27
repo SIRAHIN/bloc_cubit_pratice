@@ -1,5 +1,4 @@
 import 'package:bloc_practice/data/cubit/cubit_post_details/cubit/post_details_cubit.dart';
-import 'package:bloc_practice/data/cubit/image_picker_cubit/cubit/image_picker_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
