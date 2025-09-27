@@ -14,18 +14,47 @@ class CounterScreenCubit extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      body: BlocBuilder<CounterCubit, CounterCubitState>(
-        builder: (context, state) {
-          return SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Number Count of : ${state.count}'),
-              ],
-            ),
-          );
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<CounterCubit, CounterCubitState>(
+            listenWhen: (previous, current) {
+              return previous.count != current.count;
+            },
+            listener: (context, state) {
+              if (state.count < 0) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Negative Value Not Supported"),
+                    duration: Duration(milliseconds: 300),
+                  ),
+                );
+              } else if (state.count == 5) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Count is 5"),
+                    duration: Duration(milliseconds: 300),
+                  ),
+                );
+              }
+            },
+          ),
+        ],
+        child: BlocBuilder<CounterCubit, CounterCubitState>(
+          buildWhen: (previous, current) {
+            return previous.count != current.count;
+          },
+          builder: (context, state) {
+            return SizedBox(
+              width: double.maxFinite,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Number Count of : ${state.count}'),
+                ],
+              ),
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'navigate_btn',
